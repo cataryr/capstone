@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="css/styles.css">
+    <title>MagikStock BI</title>
+</head>
+<body>
+    <!-- Fondo -->
+    <div class="bg-overlay"></div>
+
+    <!-- Barra Lateral -->
+    <nav class="sidebar">
+        <div class="sidebar-header">
+            <img src="img/logo.png" alt="Icono" class="sidebar-icon">
+        </div>
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <a class="nav-link" href="home.html">Inicio</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="stock.html">Gestión de stock</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="employee.html">Gestión de empleados</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link disabled" href="#">Panel BI predictivo</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="config.html">Configuración de cuenta</a>
+            </li>
+        </ul>
+        <div class="sidebar-footer">
+            <form id="logout-form" action="login.html" method="post">
+                <button type="submit" class="btn btn-primary">Cerrar Sesión</button>
+            </form>
+        </div>
+
+    </nav>
+
+    <!-- Panel Inferior (oculto en escritorio) -->
+    <div class="bottom-panel">
+        <div class="icons-container">
+            <a href="home.html" class="">
+                <img src="img/home_logo.png" alt="Icono" class="icon">
+            </a>
+            <a href="stock.html" class="">
+                <img src="img/stock_logo.png" alt="Icono" class="icon">
+            </a>
+            <a href="employee.html" class="">
+                <img src="img/employee_logo.png" alt="Icono" class="icon">
+            </a>
+            <a href="bi.html" class="disabled-link">
+                <img src="img/bi_logo.png" alt="Icono" class="icon">
+            </a>
+            <a href="config.html" class="">
+                <img src="img/settings_logo.png" alt="Icono" class="icon">
+            </a>
+            <a href="login.html" class="">
+                <img src="img/exit_logo.png" alt="Icono" class="icon">
+            </a>
+        </div>
+    </div>
+
+    <!-- Bloque Flotante -->
+    <div class="floating-block">
+        <!-- Título del Panel -->
+        <h3>Panel BI</h3>
+
+        <!-- Filtros -->
+        <div class="panel-bi-filters">
+            <label for="date-filter">Fecha:</label>
+            <input type="date" id="date-filter">
+
+            <label for="category-filter">Categoría:</label>
+            <select id="category-filter">
+                <option value="all">Todas</option>
+                <option value="sales">Ventas</option>
+                <option value="expenses">Gastos</option>
+                <option value="profit">Ganancias</option>
+            </select>
+
+            <button class="btn btn-primary">Aplicar Filtros</button>
+        </div>
+
+        <!-- Gráficos -->
+        <div class="panel-bi-charts">
+            <div class="panel-bi-chart">
+                <h4>Ventas por Mes</h4>
+                <img src="img/grafico.png" alt="Gráfico de Barras">
+                <button class="btn btn-secondary generate-report-btn">Generar Reporte</button>
+            </div>
+            <div class="panel-bi-chart">
+                <h4>Distribución de Gastos</h4>
+                <img src="img/grafico.png" alt="Gráfico Circular">
+                <button class="btn btn-secondary generate-report-btn">Generar Reporte</button>
+            </div>
+            <div class="panel-bi-chart">
+                <h4>Ganancias por Categoría</h4>
+                <img src="img/grafico.png" alt="Gráfico de Líneas">
+                <button class="btn btn-secondary generate-report-btn">Generar Reporte</button>
+            </div>
+        </div>
+
+        <!-- Tabla de Datos -->
+        <div class="panel-bi-table-responsive">
+            <table class="table panel-bi-table">
+                <thead>
+                    <tr>
+                        <th>Mes</th>
+                        <th>Ventas</th>
+                        <th>Gastos</th>
+                        <th>Ganancias</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Enero</td>
+                        <td>$10,000</td>
+                        <td>$5,000</td>
+                        <td>$5,000</td>
+                    </tr>
+                    <tr>
+                        <td>Febrero</td>
+                        <td>$8,000</td>
+                        <td>$4,000</td>
+                        <td>$4,000</td>
+                    </tr>
+                    <!-- Más filas de ejemplo -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</body>
+</html>
+
+
+
