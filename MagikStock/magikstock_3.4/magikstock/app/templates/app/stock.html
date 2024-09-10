@@ -1,0 +1,163 @@
+{% extends 'app/base.html' %}
+
+{% block contenido %}
+
+{% load static %}
+
+<h3 style="text-align: center;">Control de Stock.</h3>
+        <div class="top-section">
+            <!-- Cuadro para filtrar productos -->
+            <section class="estilos_stock" id="filtros">
+                <h2>Filtrar Productos</h2>
+                <label for="filtroCategoria">Categoría:</label>
+                <select id="filtroCategoria">
+                    <!-- Opciones adicionales se añadirán dinámicamente -->
+                </select>
+        
+                <label for="filtroProveedor">Proveedor:</label>
+                <select id="filtroProveedor" >
+                    <!-- Opciones adicionales se añadirán dinámicamente -->
+                </select>
+        
+                <button id="aplicarFiltro">Aplicar Filtro</button>
+            </section>
+        </div>
+
+        <!-- Sección para ver y gestionar productos -->
+        <div class="top-section">
+            <section class="ver_stock" id="ver-gestionar-stock">
+                <h2>Ver y Gestionar Stock</h2>
+                <table id="stock-table" class="table">
+                    <thead>
+                        <tr>
+                            <th>Producto</th>
+                            <th>Cantidad</th>
+                            <th>Categoría</th>
+                            <th>Proveedor</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Aquí se mostrarán los productos -->
+                    </tbody>
+                </table>
+            </section>
+        </div>
+
+
+        <div class="top-section">
+            <!-- Cuadro para agregar productos -->
+            <section class="estilos_stock" id="agregar-productos">
+                <h2>Agregar Producto</h2>
+                <form id="stockForm_producto">
+                    <input type="hidden" id="editIndex">
+                    
+                    <!-- Campo Producto -->
+                    <label for="producto">Producto:</label>
+                    <input type="text" id="producto" required>
+            
+                    <!-- Campo Cantidad -->
+                    <label for="cantidad">Cantidad:</label>
+                    <input type="number" id="cantidad" required>
+            
+                    <!-- Campo Categoría -->
+                    <label for="categoria">Categoría:</label>
+                    <select id="categoria" required>
+                        <!-- Opciones se añadirán dinámicamente -->
+                    </select>
+            
+                    <!-- Campo Proveedor -->
+                    <label for="proveedor">Proveedor:</label>
+                    <select id="proveedor" required>
+                        <!-- Opciones se añadirán dinámicamente -->
+                    </select>
+            
+                    <!-- Botón Agregar Producto -->
+                    <button type="submit">Agregar Producto</button>
+                </form>
+            </section>
+        </div>
+
+        <div class="top-section">
+             <!-- Cuadro para agregar categorias -->
+             <section class="estilos_stock" id="agregar-categorias">
+                <h2>Agregar categorias</h2>
+                <form id="stockForm_categorias">
+                    <input type="hidden" id="editIndex">
+
+                    <!-- Campo Nombre_categoria-->
+                    <label for="Nombre_categoria">Nombre:</label>
+                    <input type="text" id="Nombre_categoria" required>
+
+                    <!-- Campo Cantidad -->
+                    <label for="descripcion">Descripción:</label>
+                    <input type="number" id="descripcion" required>
+
+                    <!-- Botón Agregar categoria -->
+                    <button type="submit">Agregar categoria</button>
+                </form>
+            </section>
+
+            <section class="estilos_stock" id="ver-categorias">
+                <h2>Ver categorias</h2>
+                <table id="stock-table" class="table">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Descripción</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Aquí se mostrarán los productos -->
+                    </tbody>
+                </table>
+            </section>
+        </div>
+
+        <div class="top-section">
+            <!-- Cuadro para agregar categorias -->
+            <section class="estilos_stock" id="agregar-proveedor">
+               <h2>Agregar proveedor</h2>
+               <form id="stockForm_proveedor">
+                   <input type="hidden" id="editIndex">
+
+                   <!-- Campo Nombre_proveedor-->
+                   <label for="Nombre_proveedor">Nombre:</label>
+                   <input type="text" id="Nombre_proveedor" required>
+
+                   <label for="telefono_proveedor">Telefono:</label>
+                   <input type="number" id="telefono_proveedor" required>
+
+                   <!-- Campo Cantidad -->
+                   <label for="correo_proveedor">Correo:</label>
+                   <input type="email" id="correo_proveedor" required>
+
+                   <!-- Botón Agregar proveedor -->
+                   <button type="submit">Agregar proveedor</button>
+               </form>
+           </section>
+
+           <section class="estilos_stock" id="ver-proveedor">
+               <h2>Ver proveedor</h2>
+               <table id="stock-table" class="table">
+                   <thead>
+                       <tr>
+                           <th>Nombre</th>
+                           <th>Telefono</th>
+                           <th>Correo</th>
+                           <th>Acciones</th>
+                       </tr>
+                   </thead>
+                   <tbody>
+                       <!-- Aquí se mostrarán los proveedor -->
+                   </tbody>
+               </table>
+           </section>
+       </div>
+        
+    </div>
+
+<script src="{% static 'app/js/stock.js' %}"></script>
+
+{% endblock %}

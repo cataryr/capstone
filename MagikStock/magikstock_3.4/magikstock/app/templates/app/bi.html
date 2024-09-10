@@ -1,0 +1,53 @@
+{% extends 'app/base.html' %}
+
+{% load static %}
+
+{% block contenido %}
+
+ <!-- Título del Panel -->
+ <h3 style="text-align: center;">Panel BI</h3>
+
+ <!-- Filtros -->
+ <div class="top-section-bi">
+     <label for="date-filter">Fecha:</label>
+     <input type="date" id="date-filter">
+
+     <label for="category-filter">Categoría:</label>
+     <select id="category-filter">
+         <option value="all">Todas</option>
+         <option value="sales">Ventas</option>
+         <option value="expenses">Gastos</option>
+         <option value="profit">Ganancias</option>
+     </select>
+
+     <label for="category-filter">Producto:</label>
+     <select id="category-filter">
+         <option value="all">Todas</option>
+         <option value="sales">Ventas</option>
+         <option value="expenses">Gastos</option>
+         <option value="profit">Ganancias</option>
+     </select>
+
+     <label for="category-filter">Proveedor:</label>
+     <select id="category-filter">
+         <option value="all">Todas</option>
+         <option value="sales">Ventas</option>
+         <option value="expenses">Gastos</option>
+         <option value="profit">Ganancias</option>
+     </select>
+
+     <button>Aplicar Filtros</button>
+ </div>
+
+ <!-- Gráficos -->
+    <div class="top-section-bi-img">
+        <div class="panel-bi-charts">
+            <div class="panel-bi-chart">
+                <h4>Ventas por Mes</h4>
+                <img class="img-bi" src="{% static 'app/img/grafico.png' %}" alt="Gráfico de Barras">
+                <button class="btn btn-secondary generate-report-btn">Generar Reporte</button>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

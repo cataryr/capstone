@@ -1,0 +1,84 @@
+{% extends 'app/base.html' %}
+
+{% block contenido %}
+
+{% load static %}
+
+<!-- Contenido del bloque flotante -->
+<h3 class="config-title" align="center">Configuración</h3>
+
+<div class="config-content">
+    <div class="config-item">
+        <div class="config-info">
+            <hr>
+            <div>
+                <p><strong>Nombre:</strong> <span id="nombre-display">{{ nombre }} {{ apellidos }}</span></p>
+                <button class="edit-btn" id="edit-nombre-button">Editar Nombre</button>
+                <button class="edit-btn" id="edit-apellidos-button">Editar Apellidos</button>
+            </div>
+
+            <p><strong>run:</strong> {{ request.session.run }}</p>
+            <p><strong>rol:</strong> {{ request.session.rol }}</p>
+            
+            <div>
+                <p><strong>Correo:</strong> <span id="correo-display">{{ correo }}</span></p>
+                <button class="edit-btn" id="edit-correo-button">Editar Correo</button>
+            </div>
+            <div>
+                <p><strong>Número:</strong> <span id="numero-display">{{ numero }}</span></p>
+                <button class="edit-btn" id="edit-numero-button">Editar Número</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Formulario para editar el nombre -->
+    <div class="config-item" id="edit-nombre-form-container" style="display:none;">
+        <form method="POST">
+            {% csrf_token %}
+            <label for="nombre">Nuevo Nombre:</label>
+            <input type="text" id="nombre" name="nombre" value="{{ nombre }}" pattern="[A-Za-z\s]+" title="Solo letras y espacios son permitidos" required>
+            <br><br>
+            <button type="submit">Guardar</button>
+            <button type="button" class="cancel-button" data-form="edit-nombre-form-container">Cancelar</button>
+        </form>
+    </div>
+    
+        <!-- Formulario para editar los apellidos -->
+    <div class="config-item" id="edit-apellidos-form-container" style="display:none;">
+        <form method="POST">
+            {% csrf_token %}
+            <label for="apellidos">Nuevos Apellidos:</label>
+            <input type="text" id="apellidos" name="apellidos" value="{{ apellidos }}" pattern="[A-Za-z\s]+" title="Solo letras y espacios son permitidos" required>
+            <br><br>
+            <button type="submit">Guardar</button>
+            <button type="button" class="cancel-button" data-form="edit-apellidos-form-container">Cancelar</button>
+        </form>
+    </div>
+
+    <div class="config-item" id="edit-correo-form-container" style="display:none;">
+        <form method="POST">
+            {% csrf_token %}
+            <label for="correo">Nuevo Correo:</label>
+            <input type="email" id="correo" name="correo" value="{{ correo }}">
+            <br><br>
+            <button type="submit">Guardar</button>
+            <button type="button" class="cancel-button" data-form="edit-correo-form-container">Cancelar</button>
+        </form>
+    </div>
+
+    <!-- Formulario para editar el número -->
+    <div class="config-item" id="edit-numero-form-container" style="display:none;">
+        <form method="POST">
+            {% csrf_token %}
+            <label for="numero">Nuevo Número:</label>
+            <input type="tel" id="numero" name="numero" value="{{ numero }}" pattern="[0-9]+" title="Solo números son permitidos" required>
+            <br><br>
+            <button type="submit">Guardar</button>
+            <button type="button" class="cancel-button" data-form="edit-numero-form-container">Cancelar</button>
+        </form>
+    </div>
+</div>
+
+<script src="{% static 'app/js/config.js' %}"></script>
+
+{% endblock %}
