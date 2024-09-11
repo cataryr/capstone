@@ -1,0 +1,669 @@
+/* ESTILO CUERPO HTML */
+body {
+    margin: 0;
+    height: 100vh; /* Asegura que el cuerpo ocupe toda la ventana */
+    overflow: hidden; /* Evita que aparezcan barras de desplazamiento */
+    position: relative;
+}
+
+.bg-overlay {
+    background-image: url('../img/fondo1.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Coloca la imagen en el fondo */
+    opacity: 0.15; /* Aplica la transparencia solo a la imagen de fondo */
+}
+
+/* Bloque Flotante */
+.floating-block {
+    position: fixed; /* Usa fixed para ajustar el bloque al espacio restante */
+    top: 20px; 
+    left: calc(250px + 20px); /* Espacio desde el borde izquierdo más el ancho de la barra lateral */
+    right: 20px; 
+    bottom: 20px; 
+    background-color: rgba(255, 255, 255, 0.8); 
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5); 
+    z-index: 0;
+    overflow: auto; 
+    min-width: 200px; 
+    transition: top 0.3s ease, left 0.3s ease, right 0.3s ease, bottom 0.3s ease; /* Transiciones suaves */
+    padding: 20px;
+    max-width: 100%;
+}
+
+/* Ajustes para el bloque flotante en dispositivos móviles */
+@media (max-width: 800px) {
+    .floating-block {
+        left: 20px; 
+        right: 20px; 
+        bottom: 80px;
+    }
+}
+
+/* Estilo del contenedor de login */
+.login-container {
+    background-color: rgba(255, 255, 255, 0.85); /* Fondo blanco con transparencia */
+    max-width: 600px;
+    width: 100%;
+    padding: 30px;
+    border-radius: 10px;
+    z-index: 1;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Añade una sombra para un efecto visual */
+    margin: 0 auto; /* Centra el contenedor en pantallas grandes */
+}
+
+/* Estilos para pantallas pequeñas */
+@media (max-width: 768px) {
+    .login-container {
+        margin: 0 20px; /* Agrega márgenes laterales en pantallas pequeñas */
+    }
+}
+
+table {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.table th, .table td {
+    text-align: center;
+}
+
+.table .btn {
+    margin: 0 5px;
+}
+
+/* Estilos para botones en dispositivos móviles */
+@media (max-width: 768px) {
+    .table .btn {
+        font-size: 0.75rem; /* Tamaño de fuente más pequeño */
+        padding: 0.5rem 0.75rem; /* Espaciado interno consistente */
+        margin: 0.25rem; /* Espaciado entre botones */
+        display: inline-flex; /* Alineación de contenido */
+        justify-content: center;
+        align-items: center;
+        min-width: 4rem; /* Ancho mínimo consistente */
+        height: 2rem; /* Altura fija para los botones */
+    }
+
+    .table .btn-warning, .table .btn-danger {
+        border-radius: 0.25rem; /* Bordes redondeados opcionales */
+    }
+
+    .table .btn-warning {
+        background-color: #ffc107; /* Color de fondo de advertencia */
+        color: #212529; /* Color de texto */
+    }
+
+    .table .btn-danger {
+        background-color: #dc3545; /* Color de fondo de peligro */
+        color: #fff; /* Color de texto */
+    }
+
+    .table .btn:hover {
+        opacity: 0.9; /* Efecto de hover */
+    }
+}
+
+/* ESTILO CONTENEDOR LOGIN */
+.logo {
+    width: 70%;
+    height: auto;
+}
+
+.vh-100 {
+    height: 100vh;
+}
+
+.btn-primary {
+    background-color: #db4d2f;
+    border-color: #db4d2f;
+}
+
+.btn-primary:hover {
+    background-color: #b44129;
+    border-color: #b44129;
+}
+
+/* ESTILO CONTENEDOR INFORMACIÓN */
+#info-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-out, padding 0.5s ease-out; /* Transición suave */
+    padding: 0;
+    border-top: 1px solid #db4d2f; /* Línea delgada para separación */
+}
+
+/* ESTILOS PAGINA DE INICIO */
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 250px;
+    background-color: #333;
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease; /* Transición suave */
+}
+
+/* Estilos para el encabezado de la barra lateral */
+.sidebar-header {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+/* Estilos para el icono en la barra lateral */
+.sidebar-icon {
+    width: 100px;
+    height: auto;
+}
+
+/* Estilos para los enlaces en la barra lateral */
+.nav-link {
+    color: #fff;
+    margin-bottom: 15px;
+    display: block;
+}
+
+/* Cambios en el color y estilo del enlace deshabilitado */
+.nav-link.disabled {
+    color: #000000; /* Color para el enlace deshabilitado */
+    pointer-events: none; /* Desactiva los eventos de clic */
+    font-weight: bold; /* Pone el texto en negrita */
+}
+
+/* Efecto de hover para los enlaces */
+.nav-link:hover {
+    color: #db4d2f;
+}
+
+/* Estilos para el pie de la barra lateral */
+.sidebar-footer {
+    margin-top: auto; /* Mueve el pie hacia el final de la barra lateral */
+    text-align: center; /* Centra el texto en el pie de la barra lateral */
+}
+
+/* Estilos para el enlace en el pie de la barra lateral */
+.sidebar-footer .nav-link {
+    margin-bottom: 0; /* Elimina el margen inferior para el enlace del pie */
+}
+
+/* Estilo para el panel inferior */
+.bottom-panel {
+    transform: translateY(105%); /* Mueve el panel fuera de la pantalla por defecto */
+    transition: transform 0.3s ease; /* Agrega una transición suave */
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 60px; /* Ajusta la altura según tus necesidades */
+    background-color: #333;
+    color: #fff;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.5);
+    z-index: 1; /* Asegura que el panel inferior esté por encima del contenido */
+}
+
+/* Contenedor de íconos */
+.icons-container {
+    display: flex;
+    justify-content: space-around; /* Distribuye los íconos con espacio alrededor */
+    align-items: center; /* Centra los íconos verticalmente */
+    height: 100%; /* Asegura que el contenedor de íconos ocupe toda la altura del panel inferior */
+}
+
+/* Estilos para los íconos */
+.icon {
+    width: 40px; /* Ajusta el tamaño según sea necesario */
+    height: auto;
+}
+
+.disabled-link {
+    pointer-events: none; /* Desactiva la capacidad de hacer clic en el enlace */
+    cursor: default; /* Cambia el cursor para indicar que el enlace no es interactivo */
+}
+
+/* Mostrar el panel inferior en dispositivos móviles */
+@media (max-width: 800px) {
+    .sidebar {
+        transform: translateX(-100%); /* Mueve la barra lateral fuera de la pantalla */
+    }
+    .bottom-panel {
+        transform: translateY(0); /* Mueve el panel a su posición visible */
+    }
+}
+
+/* PANEL BI ------------------------------------------------------------------------------------ PANEL BI */
+
+/* Estilos para el panel BI visual */
+
+/* Filtros */
+.panel-bi-filters {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    gap: 10px; /* Espaciado entre los filtros */
+    flex-wrap: nowrap; /* Mantiene los filtros en una sola fila hasta que se alcanza un tamaño pequeño */
+}
+
+.panel-bi-filters label {
+    margin-right: 10px;
+}
+
+.panel-bi-filters input,
+.panel-bi-filters select,
+.panel-bi-filters button {
+    margin-bottom: 10px;
+    flex: 1; /* Hace que los filtros ocupen espacio igual dentro de la fila */
+    min-width: 140px; /* Ajusta el tamaño mínimo de los filtros */
+}
+
+/* Gráficos */
+.panel-bi-charts {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.panel-bi-chart {
+    flex: 1;
+    min-width: 280px;
+    text-align: center;
+    margin-bottom: 20px;
+    padding: 10px; /* Agrega un margen interno para evitar que los gráficos toquen los bordes */
+    box-sizing: border-box; /* Incluye padding en el tamaño total del elemento */
+}
+
+.panel-bi-chart img {
+    max-width: 100%; /* Hace que las imágenes sean responsivas */
+    height: auto; /* Mantiene la proporción de las imágenes */
+}
+
+.panel-bi-chart h4 {
+    font-size: 1.2rem; /* Ajusta el tamaño del texto en pantallas pequeñas */
+}
+
+/* Tabla */
+.panel-bi-table-responsive {
+    margin-top: 20px;
+    overflow-x: auto;
+}
+
+.panel-bi-table th,
+.panel-bi-table td {
+    text-align: center;
+    font-size: 0.9rem; /* Ajusta el tamaño del texto de la tabla en pantallas pequeñas */
+}
+
+/* Media Query para dispositivos móviles */
+@media (max-width: 950px) {
+    .panel-bi-filters {
+        flex-direction: column; /* Coloca los filtros en una columna en pantallas pequeñas */
+    }
+
+    .panel-bi-filters input,
+    .panel-bi-filters select,
+    .panel-bi-filters button {
+        flex: 1 1 100%; /* Hace que los filtros ocupen todo el ancho disponible */
+    }
+
+    .panel-bi-charts {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .panel-bi-chart {
+        min-width: 100%;
+    }
+
+    .panel-bi-chart h4 {
+        font-size: 1rem; /* Reduce el tamaño del texto en los gráficos para pantallas pequeñas */
+    }
+}
+
+/* Estilos para los botones de "Generar Reporte" */
+.generate-report-btn {
+    margin-top: 10px;
+    padding: 8px 16px;
+    font-size: 0.9rem;
+    color: #fff;
+    background-color: #6c757d;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.generate-report-btn:hover {
+    background-color: #5a6268;
+}
+
+/* Ajustes para que los botones sean responsivos */
+@media (max-width: 768px) {
+    .generate-report-btn {
+        width: 100%; /* Hace que los botones ocupen todo el ancho disponible en dispositivos móviles */
+        margin-top: 15px;
+    }
+}
+
+/* PANEL STOCK --------------------------------------------------------------------------------------------- */
+
+/* Contenedor principal de la página */
+.container-fluid.p-4 {
+    padding: 20px;
+}
+
+/* Encabezados principales */
+h1, h2 {
+    color: #333;
+    text-align: center;
+}
+
+/* Contenedor superior para agregar productos y filtros */
+.top-section {
+    display: flex;
+    flex-wrap: wrap; /* Permite que los elementos se envuelvan si es necesario */
+    gap: 20px; /* Espacio entre los elementos */
+    margin-bottom: 20px;
+}
+
+/* Sección para agregar productos */
+#agregar-productos {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    flex: 1; /* Ocupa el espacio disponible */
+    min-width: 300px; /* Ancho mínimo para la sección */
+}
+
+/* Sección de filtros */
+#filtros {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(177, 6, 6, 0.1);
+    flex: 1; /* Ocupa el espacio disponible */
+    min-width: 300px; /* Ancho mínimo para la sección */
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Espacio entre los elementos */
+}
+
+/* Ajustes para los campos de filtro */
+#filtros label, #agregar-productos label {
+    margin-top: 10px;
+}
+
+#filtros select, #agregar-productos select,
+#filtros button, #agregar-productos button {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+#filtros select, #agregar-productos select {
+    margin-top: 10px;
+}
+
+#filtros button, #agregar-productos button {
+    background-color: #db4d2f;
+    color: white;
+    cursor: pointer;
+}
+
+#filtros button:hover, #agregar-productos button:hover {
+    background-color: #555;
+}
+
+/* TABLA VER Y GESTIONAR STOCK ------------------------------------------------------------------------------------------------------------------------------ */
+
+/* Sección para ver y gestionar productos en la parte inferior */
+#ver-gestionar-stock {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%; /* Ocupa todo el ancho disponible */
+    overflow-y: auto; /* Permite desplazamiento vertical */
+    overflow-x: hidden; /* Oculta el desplazamiento horizontal */
+}
+
+/* Estilos para la tabla de gestión de stock */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    table-layout: fixed; /* Hace que la tabla se ajuste al ancho del contenedor */
+}
+
+/* Ajuste de tamaño y espaciado de los botones de acciones */
+.actions-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.actions-button {
+    width: 100%; /* Asegura que los botones ocupen todo el ancho disponible */
+    padding: 10px; /* Ajusta el padding interno del botón */
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #db4d2f;
+    color: white;
+    cursor: pointer;
+    margin: 0; /* Elimina cualquier margen por defecto */
+    box-sizing: border-box; /* Asegura que el padding y el borde se incluyan en el ancho total */
+}
+
+.actions-button:not(:last-child) {
+    margin-bottom: 5px; /* Añade espacio entre los botones, excepto el último */
+}
+
+.actions-button:hover {
+    background-color: #555;
+}
+
+/* Ajustes específicos para pantallas pequeñas */
+@media (max-width: 768px) {
+    table {
+        width: 100%;
+        font-size: 14px; /* Ajuste del tamaño de fuente para pantallas pequeñas */
+    }
+
+    th, td {
+        padding: 8px; /* Reducir el padding para ajustarse mejor en pantallas pequeñas */
+    }
+
+    .actions-button {
+        padding: 8px; /* Ajusta el padding de los botones */
+    }
+
+    #agregar-productos select, #filtros select,
+    #agregar-productos button, #filtros button {
+        padding: 8px;
+    }
+}
+
+/* FIN TABLA VER Y GESTIONAR STOCK -------------------------------------------------------------------------------------------------------------------------- */
+
+th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+/* Formularios y campos de entrada */
+form {
+    margin-top: 20px;
+}
+
+input[type="text"],
+input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+button {
+    padding: 10px;
+    background-color: #db4d2f;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px; /* Espacio superior del botón */
+}
+
+button:hover {
+    background-color: #555;
+}
+
+/* Espaciado entre los botones de acción en la tabla */
+#stock-table button {
+    margin-right: 5px; /* Espacio entre los botones */
+}
+
+/* Estilos adicionales para gestionar stock */
+.stock-amount {
+    font-weight: bold;
+}
+
+.stock-amount.red {
+    color: red;
+}
+
+.stock-amount.orange {
+    color: orange;
+}
+
+.stock-amount.green {
+    color: green;
+}
+
+/* Estilos para alertas */
+.alert-message {
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.modal_alert {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal_alert .modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 500px;
+    width: 90%;
+    text-align: center;
+}
+
+.modal_alert .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.modal_alert img {
+    max-width: 50px;
+    margin-bottom: 10px;
+}
+
+/* Espacio entre el campo de proveedor y el botón de agregar producto */
+#proveedor {
+    margin-bottom: 15px; /* Ajusta el valor según el espacio que desees */
+}
+
+
+/* CONFIG --------------------------------------------------------------------------------------------------------------------------------------- */
+
+.config-title {
+    text-align: center;
+    font-size: 1.5rem;
+    margin: 0;
+    color: #333;
+}
+
+.config-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Espacio entre los grupos de formulario */
+}
+
+.config-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px; /* Espacio entre la información y los botones */
+}
+
+.config-info {
+    flex: 1;
+}
+
+.config-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.config-actions .edit-btn {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    color: white;
+    cursor: pointer;
+    font-size: 0.875rem;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+.config-actions .edit-btn:hover {
+    background-color: #0056b3;
+}
+
+/* Responsivo para dispositivos móviles */
+@media (max-width: 200px) {
+    .config-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .config-actions {
+        flex-direction: row;
+        gap: 10px;
+    }
+}
+
+
+
+
