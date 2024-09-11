@@ -1,0 +1,183 @@
+/* ESTILO CUERPO HTML */
+body {
+    margin: 0;
+    height: 100vh; /* Asegura que el cuerpo ocupe toda la ventana */
+    overflow: hidden; /* Evita que aparezcan barras de desplazamiento */
+    position: relative;
+}
+
+.bg-overlay {
+    background-image: url('img/fondo1.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Coloca la imagen en el fondo */
+    opacity: 0.15; /* Aplica la transparencia solo a la imagen de fondo */
+}
+
+.login-container {
+    background-color: rgba(255, 255, 255, 0.85); /* Fondo blanco con transparencia */
+    max-width: 600px;
+    width: 100%;
+    padding: 30px;
+    border-radius: 10px;
+    z-index: 1;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Añade una sombra para un efecto visual */
+}
+
+/* ESTILO CONTENEDOR LOGIN */
+.logo {
+    width: 70%;
+    height: auto;
+}
+
+.vh-100 {
+    height: 100vh;
+}
+
+.btn-primary {
+    background-color: #db4d2f;
+    border-color: #db4d2f;
+}
+
+.btn-primary:hover {
+    background-color: #b44129;
+    border-color: #b44129;
+}
+
+/* Estilos para la pantalla de carga --------------------- [Se puede eliminar más adelante, solo estético] */
+.loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); /* Fondo oscuro con opacidad */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999; /* Asegura que esté por encima de todo el contenido */
+    visibility: hidden; /* Oculta la pantalla de carga por defecto */
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.loading-screen.show {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* ESTILO CONTENEDOR INFORMACIÓN */
+#info-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-out, padding 0.5s ease-out; /* Transición suave */
+    padding: 0;
+    border-top: 1px solid #db4d2f; /* Línea delgada para separación */
+}
+
+/* ESTILOS PAGINA DE INICIO */
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 250px;
+    background-color: #333;
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease; /* Transición suave */
+}
+
+/* Estilos para el encabezado de la barra lateral */
+.sidebar-header {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+/* Estilos para el icono en la barra lateral */
+.sidebar-icon {
+    width: 100px;
+    height: auto;
+}
+
+/* Estilos para los enlaces en la barra lateral */
+.nav-link {
+    color: #fff;
+    margin-bottom: 15px;
+    display: block;
+}
+
+/* Cambios en el color y estilo del enlace deshabilitado */
+.nav-link.disabled {
+    color: #000000; /* Color para el enlace deshabilitado */
+    pointer-events: none; /* Desactiva los eventos de clic */
+    font-weight: bold; /* Pone el texto en negrita */
+}
+
+/* Efecto de hover para los enlaces */
+.nav-link:hover {
+    color: #db4d2f;
+}
+
+/* Estilos para el pie de la barra lateral */
+.sidebar-footer {
+    margin-top: auto; /* Mueve el pie hacia el final de la barra lateral */
+    text-align: center; /* Centra el texto en el pie de la barra lateral */
+}
+
+/* Estilos para el enlace en el pie de la barra lateral */
+.sidebar-footer .nav-link {
+    margin-bottom: 0; /* Elimina el margen inferior para el enlace del pie */
+}
+
+/* Estilo para el panel inferior */
+.bottom-panel {
+    transform: translateY(100%); /* Mueve el panel fuera de la pantalla por defecto */
+    transition: transform 0.3s ease; /* Agrega una transición suave */
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 60px; /* Ajusta la altura según tus necesidades */
+    background-color: #333;
+    color: #fff;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.5);
+    z-index: 1; /* Asegura que el panel inferior esté por encima del contenido */
+}
+
+/* Contenedor de íconos */
+.icons-container {
+    display: flex;
+    justify-content: space-around; /* Distribuye los íconos con espacio alrededor */
+    align-items: center; /* Centra los íconos verticalmente */
+    height: 100%; /* Asegura que el contenedor de íconos ocupe toda la altura del panel inferior */
+}
+
+/* Estilos para los íconos */
+.icon {
+    width: 40px; /* Ajusta el tamaño según sea necesario */
+    height: auto;
+}
+
+/* Mostrar el panel inferior en dispositivos móviles */
+@media (max-width: 850px) {
+    .sidebar {
+        transform: translateX(-100%); /* Mueve la barra lateral fuera de la pantalla */
+    }
+    .bottom-panel {
+        transform: translateY(0); /* Mueve el panel a su posición visible */
+    }
+}
+
+
+
