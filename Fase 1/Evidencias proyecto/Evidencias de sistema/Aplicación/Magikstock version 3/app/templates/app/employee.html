@@ -1,0 +1,43 @@
+{% extends 'app/base.html' %}
+
+{% block contenido %}
+
+<h3 style="text-align: center;">Gestión de Empleados</h3>
+
+        <!-- Formulario para agregar empleados -->
+        <form id="employee-form_2" class="mb-4">
+            <div class="mb-3">
+                <label for="employee-name_2" class="form-label">Nombre</label>
+                <input type="text" class="form-control" id="employee-name_2" placeholder="Ingresa el nombre del empleado" required>
+            </div>
+            <div class="mb-3">
+                <label for="employee-role_2" class="form-label">Rol</label>
+                <select class="form-select" id="employee-role_2" required>
+                    <option value="">Seleccione el rol</option>
+                    <option value="Empleado">Empleado</option>
+                    <option value="Administrador">Administrador</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="employee-description_2" class="form-label">Descripción</label>
+                <textarea class="form-control" id="employee-description_2" rows="3" placeholder="Ingresa una descripción del empleado" required></textarea>
+            </div>
+            <button type="submit">Agregar Empleado</button>
+        </form>
+
+        <!-- Tabla de empleados -->
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Rol</th>
+                    <th>Descripción</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody id="employee-table-body_2">
+                <!-- Los empleados se agregarán aquí mediante JavaScript -->
+            </tbody>
+        </table>
+
+{% endblock %}
