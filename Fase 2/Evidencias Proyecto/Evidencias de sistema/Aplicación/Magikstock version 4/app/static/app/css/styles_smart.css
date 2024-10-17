@@ -1,0 +1,161 @@
+/* ESTILOS DE LA BASE ----------------------------------------------
+--------------------------------------------------------------------
+-------------------------------------------------------------------- */
+
+/* AJUSTE DE BARRA LATERAL Y HORIZONTAL */
+
+@media (max-width: 800px) {
+    .sidebar {
+        transform: translateX(-100%); 
+    }
+    .bottom-panel {
+        transform: translateY(0); 
+    }
+}
+
+/* BLOQUE FLOTANTE */
+
+@media (max-width: 800px) {
+    .floating-block {
+        left: 20px; 
+        right: 20px; 
+        bottom: 80px;
+    }
+}
+
+/* ESTILOS DEL LOGIN -----------------------------------------------
+--------------------------------------------------------------------
+-------------------------------------------------------------------- */
+
+@media (max-width: 800px) {
+    .login-container {
+        padding: 20px;
+        max-width: 90%;
+    }
+
+    input {
+        padding: 8px;
+        font-size: 14px;
+    }
+
+    .logo {
+        width: 70%;
+        margin-bottom: 15px;
+    }
+}
+
+
+/* ESTILOS DE LA GESTIÓN DE EMPLEADOS ------------------------------
+--------------------------------------------------------------------
+-------------------------------------------------------------------- */
+
+@media (max-width: 800px) {
+    .table, .table thead, .table tbody, .table th, .table td, .table tr {
+        display: block;
+        width: 100%;
+    }
+    
+    .table thead {
+        display: none; /* Ocultamos el encabezado en pantallas pequeñas */
+    }
+
+    .table tr {
+        margin-bottom: 15px;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        padding: 10px;
+    }
+
+    .table td {
+        display: flex;
+        justify-content: space-between;
+        padding: 8px 10px;
+        border: none;
+        position: relative;
+    }
+
+    .table td::before {
+        content: attr(data-label);
+        font-weight: bold;
+        flex-basis: 50%;
+    }
+}
+
+
+/* BOTONES ---------------------------------------------------------
+--------------------------------------------------------------------
+-------------------------------------------------------------------- */
+
+@media screen and (max-width: 800px) {
+    .button-container {
+        text-align: center;  /* Centrar el contenido horizontalmente */
+        margin: 0 auto;  /* Opcional: Asegura que el contenedor esté centrado */
+    }
+
+    .button-magikstock-mini {
+        display: inline-block;  /* Asegura que el botón se muestre como un bloque en línea */
+        margin: 0;  /* Elimina márgenes si hay */
+        padding: 10px 20px;  /* Ajusta el espaciado interno si es necesario */
+    }
+}
+
+/* SOLO PRODUCTO ------------------------------------------------
+--------------------------------------------------------------------
+-------------------------------------------------------------------- */
+
+@media (max-width: 800px) {
+    .boton_x {
+        display: none; /* Oculta los botones de aumentar y disminuir en pantallas pequeñas */
+    }
+
+    .btn-action {
+        margin: 0 5px; /* Espaciado entre botones de acción */
+    }
+
+    .table th:nth-child(6) {
+        display: none; /* Oculta el título de Acciones */
+    }
+}
+
+@media (min-width: 801px) {
+    .boton_x {
+        display: inline-block; /* Muestra los botones de aumentar y disminuir en pantallas grandes */
+    }
+
+    .btn-action {
+        display: inline-block; /* Muestra los botones de acción */
+    }
+}
+
+@media (max-width: 800px) {
+    .boton_y {
+        display: inline-block; /* Muestra los botones de aumentar y disminuir en pantallas pequeñas */
+    }
+}
+
+@media (min-width: 801px) {
+    .boton_y {
+        display: none; /* Oculta los botones de aumentar y disminuir en pantallas grandes */
+    }
+}
+
+@media (max-width: 800px) {
+    .acciones-title {
+        display: none; /* Oculta el título "Acciones" en pantallas pequeñas */
+    }
+
+    .btn-action,
+    .boton_y {
+        width: 100%; /* Asegura que los botones ocupen el 100% del ancho en pantallas pequeñas */
+        margin-bottom: 5px; /* Espaciado entre botones */
+    }
+}
+
+@media (min-width: 801px) {
+    .btn-action,
+    .boton_y {
+        width: auto; /* Mantiene el tamaño automático en pantallas grandes */
+        margin-right: 5px; /* Espacio entre botones en pantallas grandes */
+    }
+}

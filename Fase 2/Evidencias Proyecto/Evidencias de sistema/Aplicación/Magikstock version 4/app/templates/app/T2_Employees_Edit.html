@@ -1,0 +1,78 @@
+{% extends 'app/base.html' %}
+
+{% block contenido %}
+
+{% load static %}
+
+<h3>Editar Empleado</h3>
+
+
+<form method="post" id="edit-form">
+    {% csrf_token %}
+    
+    <div class="container" >
+        <div class="row">
+            <div class="col-md-6 form-group">
+                <label for="first_name">Nombre</label>
+                <input type="text" id="first_name" name="first_name" value="{{ empleado.user.first_name }}" class="form-control" required>
+            </div>
+
+            <div class="col-md-6 form-group">
+                <label for="last_name">Apellido</label>
+                <input type="text" id="last_name" name="last_name" value="{{ empleado.user.last_name }}" class="form-control" required>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 form-group">
+                <label for="email">Correo Electrónico</label>
+                <input type="email" id="email" name="email" value="{{ empleado.user.email }}" class="form-control" required>
+            </div>
+
+            <div class="col-md-6 form-group">
+                <label for="rut">RUT</label>
+                <input type="text" id="rut" name="rut" value="{{ empleado.rut }}" class="form-control" required>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 form-group">
+                <label for="num">Número de Teléfono</label>
+                <input type="text" id="num" name="num" value="{{ empleado.num }}" class="form-control" required>
+            </div>
+
+            <div class="col-md-6 form-group">
+                <label for="rol">Rol</label>
+                <select id="rol" name="rol" class="form-control">
+                    <option value="empleado" {% if empleado.rol == "empleado" %}selected{% endif %}>Empleado</option>
+                    <option value="administrador" {% if empleado.rol == "administrador" %}selected{% endif %}>Administrador</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 form-group">
+                <label for="sucursal">Sucursal</label>
+                <select id="sucursal" name="sucursal" class="form-control" required>
+                    <option value="">Seleccione una sucursal</option>
+                    {% for sucursal in sucursales %}
+                        <option value="{{ sucursal.id }}" {% if empleado.sucursal and empleado.sucursal.id == sucursal.id %}selected{% endif %}>{{ sucursal.get_nombre_display }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+
+        <!-- Botones de Guardar y Volver -->
+        <div class="mt-3">
+            <!-- Botón para guardar cambios -->
+            <button type="submit" class="button-settings">Guardar Cambios</button>
+            
+            <!-- Botón para volver a la lista de empleados sin guardar -->
+            <button type="button" class="button-settings" onclick="window.location.href='{% url 'T2_Employees_List' %}'">Volver</button>
+        </div>
+    </div>
+</form>
+
+<script src="{% static 'app/js/register.js' %}"></script>
+
+{% endblock %}

@@ -1,0 +1,87 @@
+{% extends 'app/base.html' %}
+
+{% block contenido %}
+
+{% load static %}
+
+<h3 style="text-align: center;">Registrar Producto</h3>
+<br>
+<div class="top-section">
+    <section class="estilos_stock" id="registrar-producto">
+        {% if messages %}
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {% for message in messages %}
+                    <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+                {% endfor %}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        {% endif %}
+        
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            
+            <div class="button-container">
+                <button type="submit" class="button-magikstock-mini">Registrar Producto</button>
+            </div>
+        </form>
+    </section>
+</div>
+
+<br>
+
+<h3 style="text-align: center;">Lista de Productos</h3>
+<div class="table-responsive">
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Cantidad</th>
+                <th>Categoría</th>
+                <th>Proveedor</th>
+                <th>Fecha de Entrada</th>
+                <th>
+                    <div class="acciones-title">Acciones</div> <!-- Título del card -->
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for producto in productos %}
+            <tr>
+                <td data-label="Producto:">{{ producto.nombre_producto }}</td>
+                <td data-label="Cantidad">
+                    <button class="boton_x btn-danger update-quantity" data-action="subtract" data-id="{{ producto.id }}">-</button>
+                    <span class="cantidad" id="cantidad-{{ producto.id }}">{{ producto.cantidad }}</span>
+                    <button class="boton_x btn-success update-quantity" data-action="add" data-id="{{ producto.id }}">+</button>
+                </td>
+                <td data-label="Categoria">{{ producto.id_categoria.nombre_categoria }} - {{ producto.id_categoria.descripcion }}</td>
+                <td data-label="Proveedor">{{ producto.id_proveedor.nombre_proveedor }}</td>
+                <td>{{ producto.fecha_entrada }}</td>
+                <td>
+                    <button class="btn-action btn-warning btn-custom" onclick="window.location.href='{% url 'editar_producto' producto.id %}'">Editar</button>
+                    <form class="form-eliminar" action="{% url 'eliminar_producto' producto.id %}" method="POST" style="display:inline;">
+                        {% csrf_token %}
+                        <button type="submit" class="btn-action btn-danger btn-custom" onclick="return confirm('¿Estás seguro de que quieres eliminar este producto?');">Eliminar</button>
+                    </form>
+                    <button class="boton_y btn-danger btn-custom update-quantity" data-action="subtract" data-id="{{ producto.id }}">-</button>
+                    <button class="boton_y btn-success btn-custom update-quantity" data-action="add" data-id="{{ producto.id }}">+</button>
+                </td>                
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="6">No hay productos registrados</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="{% static 'app/js/cantidad.js' %}"></script>
+
+
+
+{% endblock %}
+
+
+

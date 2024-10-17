@@ -1,0 +1,20 @@
+{% extends 'app/base.html' %}
+
+{% block contenido %}
+<h3 style="text-align: center;">Editar Categoría</h3>
+<br>
+<div class="top-section">
+    <section class="estilos_stock" id="editar-categoria">
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            
+            <div class="mt-3">
+                <button type="submit" class="button-magikstock-mini">Actualizar</button>
+                <button type="button" class="button-magikstock-mini" onclick="window.location.href='{% url 'T1_Categoria' %}'">Volver</button>
+            </div>
+        </form>
+    </section>
+</div>
+
+{% endblock %}

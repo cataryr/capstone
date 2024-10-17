@@ -1,0 +1,21 @@
+{% extends 'app/base.html' %}
+
+{% block contenido %}
+<h2>Productos con Bajo Stock</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Producto</th>
+            <th>Cantidad</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for producto in productos_bajo_stock %}
+        <tr>
+            <td>{{ producto.nombre_producto }}</td>
+            <td>{{ producto.cantidad }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

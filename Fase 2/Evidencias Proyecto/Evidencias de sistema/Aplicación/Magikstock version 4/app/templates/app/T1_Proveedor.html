@@ -1,0 +1,72 @@
+{% extends 'app/base.html' %}
+
+{% block contenido %}
+
+<h3 style="text-align: center;"> Agregar Proveedor</h3>
+<Br>
+<div class="top-section">
+    <section class="estilos_stock" id="agregar-proveedor">
+        
+
+        {% if messages %}
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {% for message in messages %}
+                    <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+                {% endfor %}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        {% endif %}
+        
+        <form id="stockForm_proveedor" method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            
+            <div class="button-container">
+                <button type="submit" class="button-magikstock-mini">Agregar</button>
+            </div>
+        </form>
+    </section>
+</div>
+<br>
+<!-- Nueva sección para mostrar la tabla con proveedores -->
+<h3 style="text-align: center;"> Lista de Proveedores </h3>
+<div class="table-responsive">
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Teléfono</th>
+                <th>Correo Electrónico</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for proveedor in proveedores %}
+            <tr>
+                <td data-label="Nombre:">{{ proveedor.nombre_proveedor }}</td>
+                <td data-label="Teléfono:">{{ proveedor.telefono }}</td>
+                <td data-label="Mail:">{{ proveedor.correo_proveedor }}</td>
+                <td data-label="Acciones:">
+                    <!-- Botón de Editar -->
+                    <form action="{% url 'editar_proveedor' proveedor.id %}" method="get" style="display:inline;">
+                        <button type="submit" class="btn btn-warning btn-sm">Editar</button>
+                    </form>
+                    
+                    <!-- Botón de Eliminar -->
+                    <form action="{% url 'eliminar_proveedor' proveedor.id %}" method="POST" style="display:inline;">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('¿Estás seguro de que quieres eliminar este proveedor?');">Eliminar</button>
+                    </form>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="4">No hay proveedores registrados</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>    
+</div>
+
+
+{% endblock %}

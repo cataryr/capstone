@@ -1,0 +1,69 @@
+{% extends 'app/base.html' %}
+
+{% block contenido %}
+
+{% load static %}
+
+<h3>Gestión de Empleados</h3>
+<Br>
+{% if messages %}
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {% for message in messages %}
+            {{ message }}
+        {% endfor %}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+{% endif %}
+<Br>
+<!-- Tabla para mostrar empleados registrados -->
+<table class="table table-striped" id="tablaempleados">
+    <thead>
+        <tr>
+            <th>Usuario</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Correo</th>
+            <th>RUT</th>
+            <th>Número</th>
+            <th>Rol</th>
+            <th>Sucursal</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for empleado in empleados %}
+        <tr>
+            <td data-label="Usuario">{{ empleado.user.username }}</td>
+            <td data-label="Nombre">{{ empleado.user.first_name }}</td>
+            <td data-label="Apellido">{{ empleado.user.last_name }}</td>
+            <td data-label="Correo">{{ empleado.user.email }}</td>
+            <td data-label="RUT">{{ empleado.rut }}</td>
+            <td data-label="Número">{{ empleado.num }}</td>
+            <td data-label="Rol">{{ empleado.get_rol_display }}</td>
+            <td data-label="Sucursal">{{ empleado.sucursal.get_nombre_display}}</td>
+            <td data-label="Acciones">
+                <!-- Botón de Editar -->
+                <form action="{% url 'T2_Employees_Edit' empleado.id %}" method="get" style="display:inline;">
+                    <button type="submit" class="btn btn-warning btn-sm">Editar</button>
+                </form>
+                <!-- Botón de Eliminar -->
+                <form action="{% url 'T2_Employees_Delete' empleado.id %}" method="post" style="display:inline;">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('¿Estás seguro de eliminar este usuario?');">Eliminar</button>
+                </form>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="8" class="text-center">No hay empleados registrados.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<form method="get" action="{% url 'T2_Employees' %}">
+    <button type="submit" class="button-magikstock-mini" >Registrar Usuario</button>
+</form>
+
+{% endblock %}
+
