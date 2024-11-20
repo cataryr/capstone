@@ -1,0 +1,183 @@
+{% extends 'app/base.html' %}
+
+{% load static %}
+
+{% block estilos %}
+
+<link rel="stylesheet" href="{% static 'app/css/dash_style.css' %}">
+
+{% endblock %}
+
+{% block contenido %}
+
+<!-- 1. FILTROS -->
+<div class="dashboard">
+
+    <!-- 1.1 TITULO -->
+    <br>
+    <h1 class="dashboard-title">Impacto y Tendencias de Productos: Análisis y Predicción</h1>
+    <h2 class="dashboard-subtitle">Visualización del comportamiento histórico y predicción del impacto futuro</h2>
+    <hr>
+
+    <!-- 1.2 FILTROS -->
+    <form method="GET" action="{% url 'T3_Dashboard' %}" id="filterForm" class="dashboard-form">
+
+        <div class="dashboard-filters">
+    
+            <!-- 1.2.1 PRODUCTO -->
+            <div class="dashboard-filter">
+                <label for="producto" class="dashboard-label">Producto</label>
+                <select name="producto" id="producto" class="dashboard-select">
+                    <option value="">Todos</option>
+                    {% for producto in productos %}
+                        <option value="{{ producto.id_producto }}" {% if producto.id_producto|stringformat:"s" == request.GET.producto %}selected{% endif %}>
+                            {{ producto.nombre_producto }}
+                        </option>
+                    {% endfor %}
+                </select>
+            </div>
+    
+            <!-- 1.2.2 FECHA INICIO -->
+            <div class="dashboard-filter">
+                <label for="fecha_inicio" class="dashboard-label">Fecha de inicio</label>
+                <input type="date" name="fecha_inicio" id="fecha_inicio" value="{{ request.GET.fecha_inicio }}" class="dashboard-input">
+            </div>
+    
+            <!-- 1.2.3 FECHA FIN -->
+            <div class="dashboard-filter">
+                <label for="fecha_fin" class="dashboard-label">Fecha de fin</label>
+                <input type="date" name="fecha_fin" id="fecha_fin" value="{{ request.GET.fecha_fin }}" class="dashboard-input">
+            </div>
+    
+            <!-- 1.2.4 PERIODO -->
+            <div class="dashboard-filter">
+                <label for="periodo" class="dashboard-label">Período</label>
+                <select name="periodo" id="periodo" class="dashboard-select">
+                    <option value="0" {% if request.GET.periodo == "0" %}selected{% endif %}>Ninguno</option>
+                    <option value="1" {% if request.GET.periodo == "1" %}selected{% endif %}>1 Semana</option>
+                    <option value="2" {% if request.GET.periodo == "2" %}selected{% endif %}>2 Semanas</option>
+                    <option value="3" {% if request.GET.periodo == "3" %}selected{% endif %}>3 Semanas</option>
+                    <option value="4" {% if request.GET.periodo == "4" %}selected{% endif %}>4 Semanas</option>
+                </select>
+            </div>
+    
+        </div>
+    
+        <!-- 1.3 BOTONES DE FILTROS -->
+        <br>
+        <div class="dashboard-buttons">
+            <button type="submit" class="dashboard-button">Filtrar</button>
+            <button type="button" class="dashboard-button" onclick="resetFilters()">Borrar Filtros</button>
+        </div>
+    
+    </form>    
+
+</div>
+
+<script>
+    function resetFilters() {
+        // Restablecer el formulario a su estado inicial
+        document.getElementById('filterForm').reset();
+        
+        // Redirigir a la misma página sin parámetros
+        window.location.href = "{% url 'T3_Dashboard' %}";
+    }
+</script>
+
+<script>
+    // Obtener la fecha actual en formato 'YYYY-MM-DD'
+    const today = new Date().toISOString().split('T')[0];
+
+    // Establecer la fecha actual como el valor máximo para los campos de fecha
+    document.getElementById('fecha_inicio').setAttribute('max', today);
+    document.getElementById('fecha_fin').setAttribute('max', today);
+
+    // Función para validar las fechas cuando se envía el formulario
+    document.getElementById('filterForm').addEventListener('submit', function(event) {
+        const fechaInicio = document.getElementById('fecha_inicio').value;
+        const fechaFin = document.getElementById('fecha_fin').value;
+
+        // Validar que las fechas no sean mayores a la fecha actual
+        if (fechaInicio > today || fechaFin > today) {
+            alert('Las fechas no pueden ser mayores a la fecha actual.');
+            event.preventDefault();  // Detener el envío del formulario
+        }
+    });
+</script>
+
+{% if mensaje %}
+    <p>{{ mensaje }}</p>
+{% endif %}
+
+{% if fechas %}
+    <!-- Checkbox para mostrar "Total Agregar", DESMARCADO POR DEFECTO -->
+    <label for="toggleAgregar">
+        <input type="checkbox" id="toggleAgregar">
+        Mostrar Total Agregar
+    </label>
+    <canvas id="myChart" width="400" height="125"></canvas>
+    <script>
+        const ctx = document.getElementById('myChart').getContext('2d');
+        const fechas = JSON.parse('{{ fechas|safe }}');
+        const total_agregar = JSON.parse('{{ total_agregar|safe }}');
+        const total_restar = JSON.parse('{{ total_restar|safe }}');
+
+        // Predicciones de Prophet
+        const fechasPrediccion = JSON.parse('{{ fechas_prediccion|safe }}');
+        const valoresPrediccion = JSON.parse('{{ valores_prediccion|safe }}');
+
+        // Inicializar el gráfico con la serie de "Total Agregar" OCULTA POR DEFECTO
+        const myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: fechas.concat(fechasPrediccion),
+                datasets: [
+                    {
+                        label: 'Total Agregar',
+                        data: total_agregar,
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        borderWidth: 1,
+                        fill: false,
+                        hidden: true  // ESTÁ OCULTO POR DEFECTO
+                    },
+                    {
+                        label: 'Total Restar',
+                        data: total_restar,
+                        borderColor: 'rgba(255, 99, 132, 1)',
+                        borderWidth: 1,
+                        fill: false
+                    },
+                    {
+                        label: 'Predicción',
+                        data: new Array(fechas.length).fill(null).concat(valoresPrediccion),
+                        borderColor: 'rgba(54, 162, 235, 0.8)',
+                        borderDash: [5, 5],
+                        borderWidth: 1,
+                        fill: false
+                    }
+                ]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false  // QUITAR LA LEYENDA POR DEFECTO
+                    }
+                }
+            }
+        });
+
+        // Agregar el evento para alternar la visibilidad de "Total Agregar" con el checkbox
+        document.getElementById('toggleAgregar').addEventListener('change', function() {
+            const datasetAgregar = myChart.data.datasets.find(dataset => dataset.label === 'Total Agregar');
+            datasetAgregar.hidden = !this.checked;  // Cambiar la visibilidad según el estado del checkbox
+            myChart.update();  // Actualizar el gráfico para reflejar el cambio
+        });
+    </script>
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends 'app/base.html' %}
+
+{% load static %}
+
+{% block estilos %}
+<link rel="stylesheet" href="{% static 'app/css/style.css' %}">
+<link rel="stylesheet" href="{% static 'app/css/style_mobile.css' %}">
+{% endblock %}
+
+{% block contenido %}
+
+<div class="registro-productos-container">
+    <h2>Editar Producto: {{ producto.nombre_producto }}</h3>
+    <hr> 
+    <div class="top-section-editar-producto custom-form-section-editar-producto">
+        <section class="estilos-stock-editar-producto" id="editar-producto">
+            {% if messages %}
+                <div class="alert alert-dismissible fade show" role="alert">
+                    {% for message in messages %}
+                        <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+                    {% endfor %}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {% endif %}
+            
+            <form method="POST">
+                {% csrf_token %}
+                {{ form.as_p }}
+                
+                <div class="botones_editar">
+                    <button type="submit" class="button-magikstock">Actualizar</button>
+                    <button type="button" class="button-magikstock" onclick="window.location.href='{% url 'T1_Producto' %}'">Volver</button>
+                </div>
+            </form>
+        </section>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,123 @@
+{% extends 'app/base.html' %}
+
+{% load static %}
+
+{% block estilos %}
+
+<link rel="stylesheet" href="{% static 'app/css/style.css' %}">
+<link rel="stylesheet" href="{% static 'app/css/style_mobile.css' %}">
+
+{% endblock %}
+
+{% block contenido %}
+
+<div class="def_container">
+    <h2> CONFIGURACIÓN </h2>
+    <hr>
+    {% if messages %}
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {% for message in messages %}
+                {{ message }}
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    <form method="post" id="settings-form">
+
+        {% csrf_token %}
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 form-group">
+                    <label for="nombre">Nombre</label>
+                    <div class="input-group align-items-center">
+                        <input type="text" id="nombre" name="nombre" value="{{ nombre }}" class="form-control input-edit" readonly>
+                        <div class="input-group-append">
+                            <button type="button" class="img-only-button" onclick="toggleField('nombre', this)"
+                                    data-icon-edit="{% static 'app/img/icons/boton-editar.png' %}"
+                                    data-icon-cancel="{% static 'app/img/icons/eliminar.png' %}">
+                                <img src="{% static 'app/img/icons/boton-editar.png' %}" alt="Editar">
+                            </button>
+                        </div>
+                    </div>
+                </div>
+        
+                <div class="col-md-6 form-group">
+                    <label for="apellido">Apellido</label>
+                    <div class="input-group align-items-center">
+                        <input type="text" id="apellido" name="apellido" value="{{ apellido }}" class="form-control input-edit" readonly>
+                        <div class="input-group-append">
+                            <button type="button" class="img-only-button" onclick="toggleField('apellido', this)"
+                                    data-icon-edit="{% static 'app/img/icons/boton-editar.png' %}"
+                                    data-icon-cancel="{% static 'app/img/icons/eliminar.png' %}">
+                                <img src="{% static 'app/img/icons/boton-editar.png' %}" alt="Editar">
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="row">
+                <div class="col-md-6 form-group">
+                    <label for="numero">Número</label>
+                    <div class="input-group align-items-center">
+                        <input type="text" id="numero" name="numero" value="{{ num }}" class="form-control input-edit" readonly>
+                        <div class="input-group-append">
+                            <button type="button" class="img-only-button" onclick="toggleField('numero', this)"
+                                    data-icon-edit="{% static 'app/img/icons/boton-editar.png' %}"
+                                    data-icon-cancel="{% static 'app/img/icons/eliminar.png' %}">
+                                <img src="{% static 'app/img/icons/boton-editar.png' %}" alt="Editar">
+                            </button>
+                        </div>
+                    </div>
+                </div>
+        
+                <div class="col-md-6 form-group">
+                    <label for="rut">RUT</label>
+                    <div class="input-group align-items-center">
+                        <input type="text" id="rut" name="rut" value="{{ rut }}" class="form-control input-edit" readonly>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="row">
+                <div class="col-md-6 form-group">
+                    <label for="correo">Correo</label>
+                    <div class="input-group align-items-center">
+                        <input type="email" id="correo" name="correo" value="{{ correo }}" class="form-control input-edit" readonly>
+                        <div class="input-group-append">
+                            <button type="button" class="img-only-button" onclick="toggleField('correo', this)"
+                                    data-icon-edit="{% static 'app/img/icons/boton-editar.png' %}"
+                                    data-icon-cancel="{% static 'app/img/icons/eliminar.png' %}">
+                                <img src="{% static 'app/img/icons/boton-editar.png' %}" alt="Editar">
+                            </button>
+                        </div>
+                    </div>
+                </div>
+        
+                <div class="col-md-6 form-group">
+                    <label for="rol">Rol</label>
+                    <div class="input-group align-items-center">
+                        <input type="text" id="rol" name="rol" value="{{ rol }}" class="form-control input-edit" readonly>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="row">
+                <div class="col-md-6 form-group">
+                    <label for="sucursal">Sucursal</label>
+                    <div class="input-group align-items-center">
+                        <input type="text" id="sucursal" name="sucursal" value="{{ sucursal_nom }}" class="form-control input-edit" readonly>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="botones_editar">
+                <button type="submit" id="save-btn" class="button-magikstock" style="display: none;">Guardar Cambios</button>
+            </div>
+        </div>        
+    </form>   
+
+<script src="{% static 'app/js/full_scripts_settings.js' %}"></script>
+
+{% endblock %}

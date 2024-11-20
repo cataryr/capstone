@@ -1,0 +1,255 @@
+/* ----------------------------- CUERPO --------------------------------- */
+
+
+
+body {
+    margin: 0;
+    height: 100vh; 
+    overflow: hidden; 
+    position: relative;
+}
+
+.body-login-magikstock {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.bg-overlay {
+    background-image: url('../img/Fondo_.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; 
+    opacity: 0.15; 
+}
+
+
+
+/* ------------------------ LOGIN CONTAINER ----------------------------- */
+
+
+
+.login-container {
+    background-color: rgba(255, 255, 255, 0.7); 
+    max-width: 500px; /* Reducido a un máximo de 400px */
+    width: 90%; /* Ajuste relativo para pantallas más pequeñas */
+    padding: 30px;
+    border-radius: 4%;
+    z-index: 1;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+    margin: 0 auto;
+    transition: transform 1s ease, box-shadow 1s ease;
+}
+
+/* Efecto hover */
+.login-container:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 2px 15px rgba(14, 255, 239, 0.5);
+}
+
+/* Efecto al hacer clic */
+.login-container:focus,
+.login-container:active {
+    transform: scale(1);
+    box-shadow: 0px 2px 15px rgba(11, 196, 184, 0.9);
+}
+
+@media (max-width: 768px) {
+    .login-container {
+        padding: 20px;
+        border-radius: 5%;
+    }
+}
+
+@media (max-width: 480px) {
+    .login-container {
+        padding: 15px;
+        max-width: 100%; /* Ocupa todo el ancho en pantallas pequeñas */
+        border-radius: 8%;
+    }
+}
+
+
+
+/* ------------------------------ LOGO  --------------------------------- */
+
+
+
+.logo {
+    width: 80%; /* Ajusta este porcentaje según el tamaño que necesites */
+    max-width: 600px; /* Máximo ancho en pixeles */
+    height: auto; /* Mantiene la proporción */
+    margin-bottom: 15px;
+    transition: transform 1s ease, filter 0.5s ease;
+}
+
+.logo:hover {
+    transform: scale(1.03);
+    filter: drop-shadow(0 0 3px rgba(14, 255, 239, 0.5)) drop-shadow(0 0 1px rgba(14, 255, 239, 0.8));
+}
+
+@media (max-width: 768px) {
+    .logo {
+        width: 80%; /* Aumenta el tamaño para pantallas medianas */
+    }
+}
+
+@media (max-width: 480px) {
+    .logo {
+        width: 100%; /* Ocupa todo el ancho en pantallas pequeñas */
+    }
+}
+
+
+
+/* --------------------------- FORMULARIO ------------------------------- */
+
+
+
+/* Formulario */
+form {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    font-family: 'Roboto', sans-serif;
+}
+
+/* Labels */
+label {
+    width: 100%;
+    font-size: 15px;
+    color: #141414;
+    text-align: center;
+    max-width: 300px;
+}
+
+/* Ajustes para pantallas medianas */
+@media (max-width: 768px) {
+    label {
+        font-size: 16px;
+    }
+}
+
+/* Ajustes para pantallas pequeñas */
+@media (max-width: 480px) {
+    label {
+        font-size: 18px;
+    }
+}
+
+/* Inputs */
+input[type="text"],
+input[type="password"] {
+    width: 80%;
+    color: #079289;
+    max-width: 300px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: border-color 0.6s ease, box-shadow 0.3s ease;
+    margin-bottom: 15px;
+}
+
+input[type="text"]:hover,
+input[type="password"]:hover {
+    box-shadow: 0 1px 5px rgba(14, 255, 239);
+    transition: box-shadow 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+    border-color: #09b0a5;
+    box-shadow: 0 0 8px rgba(14, 255, 239);
+    outline: none;
+}
+
+/* Botón */
+.button-magikstock {
+    padding: 10px;
+    background-color: #09b0a5;
+    width: 80%;
+    max-width: 300px;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+    margin: 0 auto;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.button-magikstock:hover {
+    background-color: #0fe1d3;
+    box-shadow: 0 1px 5px rgba(14, 255, 239);
+    transition: background-color 1s ease, box-shadow 1s ease, transform 0.2s ease;
+}
+
+.button-magikstock:active {
+    transform: scale(0.98);
+    box-shadow: 0 4px 8px rgba(14, 255, 239);
+    transition: background-color 1s ease, box-shadow 1s ease, transform 0.2s ease;
+}
+
+
+/* ----------------------- ESTILOS JAVASCRIPT --------------------------- */
+
+
+
+.error-message {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(255, 0, 0, 0.8);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-family: 'Roboto', sans-serif;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    opacity: 0; /* Inicialmente invisible */
+    transition: opacity 1s ease-in-out;
+}
+
+.fade-in {
+    opacity: 1; /* Se muestra al 100% */
+}
+
+.fade-out {
+    opacity: 0; /* Desaparece */
+    transition: opacity 1s ease-in-out;
+}
+
+/*
+
+@media (max-width: 800px) {
+    .login-container {
+        padding: 20px;
+        max-width: 90%;
+    }
+
+    input {
+        padding: 8px;
+        font-size: 14px;
+    }
+
+    .logo {
+        width: 70%;
+        margin-bottom: 15px;
+    }
+}
+
+*/

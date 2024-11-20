@@ -1,0 +1,137 @@
+{% extends 'app/base.html' %}
+
+{% load static %}
+
+{% block estilos %}
+
+<link rel="stylesheet" href="{% static 'app/css/style.css' %}">
+<link rel="stylesheet" href="{% static 'app/css/style_mobile.css' %}">
+{% endblock %}
+
+{% block contenido %}
+
+<!-- 0. ALERTAS -->
+{% if messages %}
+<div class="alert alert-success alert-dismissible fade show" role="alert" id="alertMessage">
+    {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+    {% endfor %}
+</div>
+{% endif %}
+
+<!-- 1. LISTA DE PRODUCTOS -->
+<div class="lista-productos-container">
+
+    <!-- 1.1 TITULO -->
+    <h2> Lista de productos </h3>
+    <hr>
+
+    <!-- 1.2 FILTROS -->
+    <div class="filtro-proveedor-inline-producto">
+        <form method="get" class="formulario-filtro-inline-producto">
+            <div class="filtro-group">
+                <label for="proveedor" class="filtro-label-inline-producto">Proveedor:</label>
+                <select name="proveedor" id="proveedor" class="filtro-select-inline-producto">
+                    <option value="">Todos</option>
+                    {% for proveedor in proveedores %}
+                        <option value="{{ proveedor.id_proveedor }}" {% if proveedor.id_proveedor|stringformat:"s" == request.GET.proveedor %}selected{% endif %}>
+                            {{ proveedor.nombre_proveedor }}
+                        </option>
+                    {% endfor %}
+                </select>
+                <button type="submit" class="button-magikstock">Filtrar</button>
+                <button type="button" onclick="location.href='{% url 'T1_Producto' %}'" class="button-magikstock">Restablecer</button> 
+            </div>
+        </form>
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Buscar producto..." class="search-input">
+        </div> 
+    </div>
+
+    <!-- 1.3 SEPARADOR -->
+    <hr>  
+
+    <!-- 1.4 TABLA -->
+    <div class="table-responsive-producto">
+        <div class="tabla-productos-container-producto">
+            <table class="table table-striped table-bordered table-producto">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Cantidad</th>
+                        <th>Categoría</th>
+                        <th>Proveedor</th>
+                        <th>Fecha de Entrada</th>
+                        <th>
+                            <div class="acciones-title-producto">Acciones</div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody id="productosTable">
+                    {% for producto in productos %}
+                        <tr>
+                            <td data-label="Producto:">{{ producto.nombre_producto }}</td>
+                            <td data-label="Cantidad:">
+                                <div class="cantidad-container-producto">
+                                    <button class="boton_x-producto btn-danger update-quantity" data-action="subtract" data-id="{{ producto.id_producto }}">-</button>
+                                    <span class="cantidad" id="cantidad-{{ producto.id_producto }}">{{ producto.cantidad }}</span>
+                                    <button class="boton_x-producto btn-success update-quantity" data-action="add" data-id="{{ producto.id_producto }}">+</button>
+                                </div>
+                            </td>
+                            <td data-label="Categoria:">{{ producto.id_categoria.nombre_categoria }}</td>
+                            <td data-label="Proveedor:">{{ producto.id_proveedor.nombre_proveedor }}</td>
+                            <td data-label="Fecha de ingreso:">{{ producto.fecha_entrada }}</td>
+                            <td>
+                                <div class="inline-buttons-producto">
+                                    <button class="boton_y-producto btn-danger update-quantity" data-action="subtract" data-id="{{ producto.id_producto }}">-</button>
+                                    <button class="boton_y-producto btn-success update-quantity" data-action="add" data-id="{{ producto.id_producto }}">+</button>
+                                    <button class="btn-action-producto btn-warning btn-custom" onclick="window.location.href='{% url 'editar_producto' producto.id_producto %}'">Editar</button>
+                                    {% if is_admin %}
+                                    <form class="form-eliminar-producto" action="{% url 'eliminar_producto' producto.id_producto %}" method="POST" style="display:inline;">
+                                        {% csrf_token %}
+                                        <button type="submit" class="btn-action-producto btn-danger btn-custom" onclick="return confirm('¿Estás seguro de que quieres eliminar este producto?');">Eliminar</button>
+                                    </form>
+                                    {% endif %}
+                                </div>
+                            </td>
+                        </tr>
+                    {% empty %}
+                        <tr>
+                            <td colspan="6">No hay productos registrados</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+<!-- 2. REGISTRO DE PRODUCTOS -->
+<div class="registro-productos-container">
+
+    <!-- 2.1 TITULO -->
+    <h2> Registro de productos </h3>
+    <hr>
+    <!-- 2.2 FORMULARIO -->
+    <div class="top-section-producto custom-form-section-producto">
+        <section class="estilos_stock-producto" id="registrar-producto">
+            
+            <!-- 2.2.2 FORMULARIO -->
+            <form method="POST">
+                {% csrf_token %}
+                {{ form.as_p }}  <!-- El formulario se renderiza con todos los campos, incluidos los de sucursal y proveedor -->
+                <div class="button-container-producto">
+                    <button type="submit" class="button-magikstock"> Registrar </button>
+                </div>
+            </form>
+
+        </section>
+    </div>
+
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="{% static 'app/js/full_scripts_producto.js' %}"></script>
+
+{% endblock %}
