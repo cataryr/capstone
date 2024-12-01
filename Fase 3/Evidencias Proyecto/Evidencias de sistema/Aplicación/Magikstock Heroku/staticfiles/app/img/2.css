@@ -1,0 +1,506 @@
+.filtros-container {
+    display: flex; /* Coloca los elementos en una sola línea */
+    align-items: center; /* Alinea verticalmente los elementos al centro */
+    gap: 10px; /* Espacio entre los elementos del filtro */
+}
+
+/* Estilo del contenedor del botón para centrarlo */
+.button-container {
+    display: flex; /* Utiliza Flexbox para centrar */
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+    margin-top: 20px; /* Espacio superior opcional */
+    width: 100%; /* Asegura que el contenedor ocupe todo el ancho */
+    box-sizing: border-box; /* Incluye padding y border en el ancho */
+}
+
+/* Estilo personalizado del botón */
+.btn-custom {
+    width: 200px; /* Ancho del botón */
+    height: 50px; /* Alto del botón */
+    background-color: #09b0a4; /* Color de fondo */
+    color: white; /* Color del texto */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+    font-size: 16px; /* Tamaño de la fuente */
+    cursor: pointer; /* Cambia el cursor al pasar por encima */
+    transition: background-color 0.3s; /* Efecto de transición */
+}
+
+/* Efecto hover */
+.btn-custom:hover {
+    background-color: #db4d2f; /* Color de fondo al pasar el cursor */
+}
+
+/* Estilo responsivo */
+@media (max-width: 600px) {
+    .btn-custom {
+        width: 100%; /* Ancho completo en pantallas pequeñas */
+        font-size: 14px; /* Tamaño de fuente más pequeño */
+        height: 45px; /* Ajuste de altura */
+    }
+}
+
+
+/* Estilo de la tabla */
+#stock-table {
+    width: 100%; /* Tabla ocupa todo el ancho disponible */
+    border-collapse: collapse; /* Elimina los espacios entre las celdas */
+    margin-bottom: 20px; /* Espacio inferior para separar de otros elementos */
+}
+
+#stock-table th, #stock-table td {
+    border: 1px solid #ddd; /* Borde alrededor de celdas */
+    padding: 8px; /* Espaciado interno en las celdas */
+    text-align: center; /* Alinea el contenido al centro */
+}
+
+/* Estilo para el encabezado de la tabla */
+#stock-table th {
+    background-color: #f2f2f2; /* Color de fondo del encabezado */
+    font-weight: bold; /* Negrita en el encabezado */
+}
+
+/* Contenedor de los botones */
+.button-group {
+    display:contents; /* Utiliza Flexbox */
+    justify-content: space-around; /* Espacio uniforme entre los botones */
+    align-items: center; /* Alinea verticalmente */
+    gap: 5px; /* Espacio reducido entre los botones */
+    margin: 5px 0; /* Margen vertical entre botones y tabla */
+}
+
+/* Estilo general para botones */
+.btn-small {
+    display: inline-flex; /* Asegura la alineación vertical */
+    align-items: center; /* Centra verticalmente el contenido */
+    justify-content: center; /* Centra horizontalmente el contenido */
+    background-color: #db4d2f; /* Color de fondo */
+    color: white; /* Color del texto */
+    border: none; /* Sin borde */
+    border-radius: 4px; /* Bordes redondeados */
+    padding: 5px 8px; /* Espaciado interno reducido */
+    font-size: 12px; /* Tamaño de la fuente más pequeño */
+    cursor: pointer; /* Cambia el cursor al pasar por encima */
+    transition: background-color 0.3s; /* Efecto de transición */
+    text-decoration: none; /* Sin subrayado */
+    line-height: 1; /* Asegura alineación de altura */
+    height: 30px; /* Altura específica más pequeña */
+    min-width: 60px; /* Ancho mínimo reducido para uniformidad */
+    box-sizing: border-box; /* Incluye el padding en el tamaño total */
+    margin: 0; /* Elimina margen adicional */
+    vertical-align: middle; /* Alinea al centro dentro del contenedor */
+}
+
+/* Efecto hover para botones */
+.btn-small {
+    background-color: #09b0a4; /* Color rojo para el botón de eliminar */
+}
+
+/* Efecto hover específico para el botón de eliminar */
+.btn-small:hover {
+    background-color: #db4d2f; /* Color rojo oscuro al pasar el cursor */
+}
+
+/* Estilo específico para el botón de eliminar */
+.btn-delete {
+    background-color: #09b0a4; /* Color rojo para el botón de eliminar */
+}
+
+/* Efecto hover específico para el botón de eliminar */
+.btn-delete:hover {
+    background-color: #db4d2f; /* Color rojo oscuro al pasar el cursor */
+}
+
+/* Estilo específico para el botón de editar */
+.btn-edit {
+    background-color: #09b0a4; /* Color verde para el botón de editar */
+}
+
+/* Efecto hover específico para el botón de editar */
+.btn-edit:hover {
+    background-color: #db4d2f; /* Color verde oscuro al pasar el cursor */
+}
+
+/* Estilo responsivo para dispositivos móviles */
+@media (max-width: 768px) {
+    /* Estilo de la tabla en dispositivos móviles */
+    #stock-table {
+        display: block; /* La tabla se comporta como un bloque */
+        overflow-x: auto; /* Permite desplazamiento horizontal si es necesario */
+    }
+
+    /* Oculta el encabezado de la tabla en móviles */
+    #stock-table thead {
+        display: none;
+    }
+
+    /* Estilo para cada fila de la tabla en móvil */
+    #stock-table tr {
+        display: block;
+        margin-bottom: 15px; /* Separación entre filas */
+        border: 1px solid #ddd; /* Borde alrededor de cada fila */
+        border-radius: 8px; /* Bordes redondeados */
+        padding: 10px; /* Espaciado interno */
+        background-color: #f9f9f9; /* Fondo ligeramente gris para diferenciar */
+    }
+
+    /* Estilo para cada celda en móvil */
+    #stock-table td {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 5px;
+        border: none; /* Sin borde en las celdas */
+        border-bottom: 1px solid #ddd; /* Borde inferior */
+        position: relative; /* Posición relativa para los pseudo-elementos */
+    }
+
+    #stock-table td::before {
+        content: attr(data-label); /* Etiqueta antes del contenido */
+        flex-basis: 40%; /* Ancho de la etiqueta */
+        text-align: left; /* Texto a la izquierda */
+        font-weight: bold; /* Negrita */
+        color: #333; /* Color del texto */
+    }
+
+    /* Asignar las etiquetas a cada celda */
+    #stock-table td:nth-child(1)::before { content: "Producto"; }
+    #stock-table td:nth-child(2)::before { content: "Cantidad"; }
+    #stock-table td:nth-child(3)::before { content: "Categoría"; }
+    #stock-table td:nth-child(4)::before { content: "Proveedor"; }
+
+    #stock-table td:last-child {
+        border-bottom: none; /* Sin borde en la última celda */
+    }
+
+    /* Contenedor de los botones en dispositivos móviles */
+    .button-group {
+        flex-direction: row; /* Botones en línea */
+        justify-content: center; /* Botones centrados */
+        gap: 5px; /* Espacio reducido entre botones */
+        flex-wrap: wrap; /* Se ajustan si no caben en una línea */
+        margin-top: 10px; /* Espacio adicional en la parte superior */
+    }
+
+    /* Botones en dispositivos móviles */
+    .btn-small {
+        flex: 1; /* Ocupan el ancho disponible */
+        margin: 2px; /* Espaciado reducido entre botones */
+        max-width: calc(50% - 4px); /* Máximo ancho para 2 botones por fila */
+    }
+
+    /* Separación entre cada grupo de botones */
+    .button-group + .button-group {
+        margin-top: 10px; /* Espacio entre los grupos de botones */
+    }
+}
+
+/* ---------------------------AGREGAR_PRODUCTO------------------------------ */
+
+
+/* Estilo del formulario para alineación horizontal */
+#stockForm_producto {
+    display: flex; /* Utiliza Flexbox */
+    flex-wrap: wrap; /* Permite que los elementos se ajusten en líneas si es necesario */
+    gap: 10px; /* Espacio entre los elementos */
+    align-items: center; /* Alinea verticalmente los elementos */
+    justify-content: flex-start; /* Alinea los elementos al inicio */
+}
+
+/* Estilo de los campos del formulario */
+#stockForm_producto label {
+    flex-basis: auto; /* Ajuste automático de ancho */
+    margin-bottom: 5px; /* Margen inferior para espacio con el campo */
+}
+
+#stockForm_producto input[type="text"],
+#stockForm_producto input[type="number"],
+#stockForm_producto select {
+    flex: 1; /* Ocupa el espacio disponible */
+    padding: 8px; /* Relleno interno */
+    margin-bottom: 10px; /* Margen inferior */
+    border: 1px solid #ddd; /* Borde de los campos */
+    border-radius: 4px; /* Bordes redondeados */
+    box-sizing: border-box; /* Incluye el padding en el tamaño total */
+    min-width: 150px; /* Ancho mínimo para los campos */
+}
+
+/* Contenedor para centrar el botón */
+#stockForm_producto .button-container {
+    display: flex; /* Utiliza Flexbox */
+    justify-content: center; /* Centra el botón horizontalmente */
+    width: 100%; /* Ocupa todo el ancho del formulario */
+    margin-top: 20px; /* Margen superior opcional */
+}
+
+/* Botón Agregar Producto */
+#stockForm_producto button {
+    padding: 10px 20px; /* Espaciado interno del botón */
+    background-color: #db4d2f; /* Color de fondo */
+    color: white; /* Color del texto */
+    border: none; /* Sin borde */
+    border-radius: 4px; /* Bordes redondeados */
+    cursor: pointer; /* Puntero al pasar por encima */
+    transition: background-color 0.3s; /* Transición suave */
+    margin: 0; /* Elimina margen adicional */
+    display: block; /* Botón en bloque */
+    width: auto; /* Elimina el ancho completo */
+}
+
+/* Efecto hover para el botón */
+#stockForm_producto button:hover {
+    background-color: #db4d2f; /* Color de fondo al pasar el cursor */
+}
+
+/* Responsivo para pantallas más pequeñas */
+@media (max-width: 768px) {
+    #stockForm_producto {
+        flex-direction: column; /* Cambia a disposición vertical en pantallas pequeñas */
+    }
+
+    #stockForm_producto label {
+        flex-basis: auto; /* Ajusta el ancho de las etiquetas */
+        margin-bottom: 0; /* Elimina margen inferior */
+    }
+
+    #stockForm_producto input[type="text"],
+    #stockForm_producto input[type="number"],
+    #stockForm_producto select {
+        width: 100%; /* Campos ocupan todo el ancho disponible */
+    }
+
+    #stockForm_producto .button-container {
+        justify-content: center; /* Centra el botón en móviles */
+    }
+
+    #stockForm_producto button {
+        width: auto; /* Ancho automático en dispositivos móviles */
+    }
+}
+
+
+
+/* Estilos generales para la sección superior */
+.top-section {
+    display: flex; /* Utiliza Flexbox */
+    flex-wrap: wrap; /* Permite que los elementos se ajusten en líneas */
+    gap: 20px; /* Espacio entre las secciones */
+    padding: 20px; /* Relleno interno */
+    background-color: #f0f0f0; /* Color de fondo opcional */
+    border-radius: 8px; /* Bordes redondeados */
+    justify-content: space-between; /* Distribuye el contenido */
+}
+
+/* Estilos de cada sección (formulario y tabla) */
+.estilos_stock {
+    flex: 1 1 45%; /* Asegura que las secciones ocupen el 45% del ancho cada una */
+    min-width: 280px; /* Ancho mínimo para evitar que se encojan demasiado */
+    background-color: #ffffff; /* Fondo blanco */
+    padding: 20px; /* Relleno interno */
+    border: 1px solid #ddd; /* Borde alrededor */
+    border-radius: 8px; /* Bordes redondeados */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+}
+
+/* Estilo del formulario */
+#stockForm_proveedor {
+    display: flex; /* Utiliza Flexbox */
+    flex-wrap: wrap; /* Permite que los elementos se ajusten en línea */
+    gap: 10px; /* Espacio entre elementos */
+    align-items: flex-start; /* Alinea verticalmente al inicio */
+}
+
+/* Campos del formulario */
+#stockForm_proveedor label {
+    flex-basis: 100%; /* Etiquetas ocupan toda la línea */
+    margin-bottom: 5px; /* Espaciado inferior */
+    font-weight: bold; /* Negrita */
+}
+
+#stockForm_proveedor input[type="text"],
+#stockForm_proveedor input[type="number"],
+#stockForm_proveedor input[type="email"] {
+    flex: 1 1 100%; /* Ocupan toda la línea */
+    padding: 8px; /* Relleno interno */
+    margin-bottom: 10px; /* Margen inferior */
+    border: 1px solid #ddd; /* Borde */
+    border-radius: 4px; /* Bordes redondeados */
+    box-sizing: border-box; /* Incluye el padding en el tamaño total */
+}
+
+
+
+#stock-table-proveedor th, 
+#stock-table-proveedor td {
+    border: 1px solid #ddd; /* Bordes de celdas */
+    padding: 8px; /* Espaciado interno */
+    text-align: center; /* Centrado */
+    word-wrap: break-word; /* Permite que el texto largo se divida en varias líneas */
+    white-space: nowrap; /* Evita que el texto se salga de la celda */
+    overflow: hidden; /* Oculta el contenido desbordado */
+    text-overflow: ellipsis; /* Añade puntos suspensivos para texto largo */
+}
+
+/* Encabezado de la tabla */
+#stock-table-proveedor th {
+    background-color: #f4f4f4; /* Fondo del encabezado */
+    font-weight: bold; /* Negrita */
+}
+
+/* Responsivo para pantallas pequeñas */
+@media (max-width: 768px) {
+    .top-section {
+        flex-direction: column; /* Apila las secciones en columna */
+        padding: 10px; /* Relleno más pequeño */
+    }
+
+    .estilos_stock {
+        flex: 1 1 100%; /* Ocupa todo el ancho en móviles */
+        margin-bottom: 20px; /* Separación entre secciones */
+    }
+
+    #stockForm_proveedor {
+        flex-direction: column; /* Campos en columna */
+        gap: 5px; /* Espaciado más pequeño entre elementos */
+    }
+
+    #stockForm_proveedor input[type="text"],
+    #stockForm_proveedor input[type="number"],
+    #stockForm_proveedor input[type="email"] {
+        width: 100%; /* Ancho completo para campos */
+    }
+
+
+    #stock-table-proveedor th, 
+    #stock-table-proveedor td {
+        text-align: left; /* Alineación a la izquierda en móviles */
+        padding: 10px 5px; /* Relleno más pequeño */
+    }
+
+    #stock-table-proveedor td {
+        white-space: normal; /* Permite saltos de línea */
+        word-wrap: break-word; /* Permite que el texto largo se divida en varias líneas */
+    }
+}
+
+/* Estilo del formulario */
+#stockForm_categorias {
+    display: flex; /* Utiliza Flexbox */
+    flex-wrap: wrap; /* Permite que los elementos se ajusten en línea */
+    gap: 10px; /* Espacio entre elementos */
+    align-items: flex-start; /* Alinea verticalmente al inicio */
+}
+
+/* Campos del formulario */
+#stockForm_categorias label {
+    flex-basis: 100%; /* Etiquetas ocupan toda la línea */
+    margin-bottom: 5px; /* Espaciado inferior */
+    font-weight: bold; /* Negrita */
+}
+
+#stockForm_categorias input[type="text"] {
+    flex: 1 1 100%; /* Ocupan toda la línea */
+    padding: 8px; /* Relleno interno */
+    margin-bottom: 10px; /* Margen inferior */
+    border: 1px solid #ddd; /* Borde */
+    border-radius: 4px; /* Bordes redondeados */
+    box-sizing: border-box; /* Incluye el padding en el tamaño total */
+}
+
+/* Estilo de la tabla */
+#stock-table-categorias th, 
+#stock-table-categorias td {
+    border: 1px solid #ddd; /* Bordes de celdas */
+    padding: 8px; /* Espaciado interno */
+    text-align: center; /* Centrado */
+    word-wrap: break-word; /* Permite que el texto largo se divida en varias líneas */
+    white-space: nowrap; /* Evita que el texto se salga de la celda */
+    overflow: hidden; /* Oculta el contenido desbordado */
+    text-overflow: ellipsis; /* Añade puntos suspensivos para texto largo */
+}
+
+/* Encabezado de la tabla */
+#stock-table-categorias th {
+    background-color: #f4f4f4; /* Fondo del encabezado */
+    font-weight: bold; /* Negrita */
+}
+
+/* Responsivo para pantallas pequeñas */
+@media (max-width: 768px) {
+    .top-section {
+        flex-direction: column; /* Apila las secciones en columna */
+        padding: 10px; /* Relleno más pequeño */
+    }
+
+    .estilos_stock {
+        flex: 1 1 100%; /* Ocupa todo el ancho en móviles */
+        margin-bottom: 20px; /* Separación entre secciones */
+    }
+
+    #stockForm_categorias {
+        flex-direction: column; /* Campos en columna */
+        gap: 5px; /* Espaciado más pequeño entre elementos */
+    }
+
+    #stockForm_categorias input[type="text"] {
+        width: 100%; /* Ancho completo para campos */
+    }
+
+    #stock-table-categorias th, 
+    #stock-table-categorias td {
+        text-align: left; /* Alineación a la izquierda en móviles */
+        padding: 10px 5px; /* Relleno más pequeño */
+    }
+
+    #stock-table-categorias td {
+        white-space: normal; /* Permite saltos de línea */
+        word-wrap: break-word; /* Permite que el texto largo se divida en varias líneas */
+    }
+}
+
+/* Estilo de la tabla de empleados */
+#employee-table th, 
+#employee-table td {
+    border: 1px solid #ddd; /* Bordes de celdas */
+    padding: 8px; /* Espaciado interno */
+    text-align: center; /* Centrado */
+    word-wrap: break-word; /* Permite que el texto largo se divida en varias líneas */
+    white-space: nowrap; /* Evita que el texto se salga de la celda */
+    overflow: hidden; /* Oculta el contenido desbordado */
+    text-overflow: ellipsis; /* Añade puntos suspensivos para texto largo */
+}
+
+/* Encabezado de la tabla */
+#employee-table th {
+    background-color: #f4f4f4; /* Fondo del encabezado */
+    font-weight: bold; /* Negrita */
+}
+
+/* Responsivo para pantallas pequeñas */
+@media (max-width: 768px) {
+    .estilos_empleados {
+        flex: 1 1 100%; /* Ocupa todo el ancho en móviles */
+        margin-bottom: 20px; /* Separación entre secciones */
+    }
+    
+
+    #employee-table th:nth-child(5), /* Oculta Número */
+    #employee-table td:nth-child(5), /* Oculta Número */
+    #employee-table th:nth-child(6), /* Oculta Correo */
+    #employee-table td:nth-child(6) { /* Oculta Correo */
+        display: none; /* No se muestra en móviles */
+    }
+    
+    #employee-table th, 
+    #employee-table td {
+        text-align: left; /* Alineación a la izquierda en móviles */
+        padding: 10px 5px; /* Relleno más pequeño */
+    }
+
+    #employee-table td {
+        white-space: normal; /* Permite saltos de línea */
+        word-wrap: break-word; /* Permite que el texto largo se divida en varias líneas */
+    }
+}
+
