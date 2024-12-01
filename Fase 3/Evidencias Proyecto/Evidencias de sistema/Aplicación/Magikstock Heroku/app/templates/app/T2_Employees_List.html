@@ -1,0 +1,95 @@
+{% extends 'app/base.html' %}
+
+{% load static %}
+
+{% block estilos %}
+<link rel="stylesheet" href="{% static 'app/css/style.css' %}">
+<link rel="stylesheet" href="{% static 'app/css/style_mobile.css' %}">
+{% endblock %}
+
+{% block contenido %}
+
+
+{% if messages %}
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+    {% for message in messages %}
+        {{ message }}
+    {% endfor %}
+</div>
+{% endif %}
+
+
+<div class="def_container">
+
+    
+    <h2> GESTIÓN DE EMPLEADOS </h2>
+
+    
+    <hr> 
+    <div class="table-responsive-empleado">
+        
+        <table class="table-empleados table-striped-empleados" id="tabla-empleados">
+
+            <thead>
+                <tr>
+                    <th>Usuario</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Correo</th>
+                    <th>RUT</th>
+                    <th>Número</th>
+                    <th>Rol</th>
+                    <th>Sucursal</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for empleado in empleados %}
+                    {% if empleado.user != request.user %}
+                    <tr>
+                        <td data-label="Usuario">{{ empleado.user.username }}</td>
+                        <td data-label="Nombre">{{ empleado.user.first_name }}</td>
+                        <td data-label="Apellido">{{ empleado.user.last_name }}</td>
+                        <td data-label="Correo">{{ empleado.user.email }}</td>
+                        <td data-label="RUT">{{ empleado.rut }}</td>
+                        <td data-label="Número">{{ empleado.num }}</td>
+                        <td data-label="Rol">{{ empleado.get_rol_display }}</td>
+                        <td data-label="Sucursal">{{ empleado.sucursal }}</td>
+                        <td data-label="Acciones">
+                            
+                            <form action="{% url 'T2_Employees_Edit' empleado.id %}" method="get" style="display:inline;">
+                                <button type="submit" class="btn-empleado btn-warning-empleado">Editar</button>
+                            </form>
+                            
+                            <form action="{% url 'T2_Employees_Delete' empleado.id %}" method="post" style="display:inline;">
+                                {% csrf_token %}
+                                <button type="submit" class="btn-empleado btn-danger-empleado" onclick="return confirm('¿Estás seguro de eliminar este usuario?');">Eliminar</button>
+                            </form>
+                        </td>
+                    </tr>
+                    {% endif %}
+                {% empty %}
+                    <tr>
+                        <td colspan="9" class="text-center">No hay empleados registrados.</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+<div class="def_container">
+    
+    <form method="get" action="{% url 'T2_Employees' %}" class="botones_editar">
+        <button type="submit" class="button-magikstock"> Registrar nuevo empleado </button>
+    </form>
+</div>
+
+<script src="{% static 'app/js/full_scripts.js' %}"></script>
+
+{% endblock %}
+

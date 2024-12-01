@@ -1,0 +1,561 @@
+/* MagikStock [ESTILOS STANDARD] ------------------------------------------------------- */
+/* ------------------------------------------------------------------------------------- */
+/* ------------------------------------------------------------------------------------- */
+
+.button-magikstock {
+    font-family: 'Roboto Slab', serif;
+    font-weight: bold;
+    color: white;
+    background-color: #09b0a5;
+    padding: 10px;
+    width: 80%;
+    max-width: 300px;
+    border: none;
+    border-radius: 8px;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+}
+.button-magikstock:hover {
+    background-color: #0fe1d3;
+    box-shadow: 0 1px 5px rgba(14, 255, 239);
+    transition: background-color 1s ease, box-shadow 1s ease, transform 0.2s ease;
+}
+.button-magikstock:active {
+    transform: scale(0.98);
+    box-shadow: 0 4px 8px rgba(14, 255, 239);
+    transition: background-color 1s ease, box-shadow 1s ease, transform 0.2s ease;
+}
+hr {
+    border: none;
+    height: 3px;
+    background-color: #09b0a5;
+    width: 100%;
+}
+h2 {
+    margin-top: 20px;
+    font-family: 'Roboto Slab', serif;
+    font-size: 1.5em;
+    color: #000000;
+    text-align: center;
+    margin-bottom: 15px;
+}
+label, input, div, th, td {
+    font-family: 'Roboto', serif;
+}
+label {
+    font-size: 1em;
+    font-weight: bold;
+}
+input, select {
+    width: 100%;
+    padding: 8px;
+    font-size: 1em;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    min-height: 40px;
+}
+thead th {
+    font-family: 'Roboto Slab', serif;
+}
+th, td {
+    text-align: center;
+}
+td {
+    font-family: 'Roboto', serif;
+}
+.filtro-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.def_container {
+    padding: 20px;
+    background-color: #bebebe57;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+.botones_editar {
+    display: flex;              
+    justify-content: center;     
+    gap: 20px; 
+    margin: 15px;                             
+}
+
+/* MagikStock [Inicio] ----------------------------------------------------------------- */
+/* ------------------------------------------------------------------------------------- */
+/* ------------------------------------------------------------------------------------- */
+
+/* HISTORIAL DE MOVIMIENTOS ------------------------------------------------------------ */
+.historial-movimientos-home {
+    padding: 20px;
+    background-color: #bebebe57;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+.formulario-filtros-home {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.filtros-en-linea-home {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+    width: 100%;
+}
+.filtro-group-home {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex: 1;
+}
+.filtro-input-home {
+    min-width: 130px;
+}
+.filtro-select-home {
+    min-width: 130px;
+    height: 38px;
+    line-height: normal;
+    vertical-align: middle;
+}
+.botones-filtro-home {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    width: 40%;
+    margin-top: 20px;
+}
+.tabla-movimientos-container-home {
+    max-height: 370px;
+    overflow-y: auto;
+}
+.tabla-movimientos-home {
+    width: 100%;
+    border-collapse: collapse;
+}
+.tabla-movimientos-home th, .tabla-movimientos-home td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+.tabla-movimientos-home th {
+    background-color: #09b0a5;
+    color: white;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+.tabla-movimientos-home tr:nth-child(even) {
+    background-color: #ffffff;
+}
+
+/* PRODUCTOS BAJO STOCK ---------------------------------------------------------------- */
+.productos-bajo-stock-home {
+    padding: 20px;
+    background-color: #bebebe57;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+.productos-bajo-stock-home .proveedor-container-home {
+    background-color: #f8f8f8;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 20px;
+    width: 100%;
+    box-sizing: border-box;
+}
+.productos-bajo-stock-home .proveedor-container-wrapper-home {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+.proveedor-container-home {
+    flex: 1 1 calc(50% - 10px);
+    max-width: calc(50% - 10px);
+}
+.proveedor-nombre-home {
+    text-align: center;
+}
+.tabla-bajo-stock-container-home {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.tabla-bajo-stock-home {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.tabla-bajo-stock-home th, .tabla-bajo-stock-home td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+.tabla-bajo-stock-home th {
+    background-color: #09b0a5;
+    color: white;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+.tabla-bajo-stock-home tr:nth-child(even) {
+    background-color: #ffffff;
+}
+.bajo-stock-home {
+    color: red;
+    font-weight: bold;
+}
+
+/* MagikStock [Gestión de stock] ------------------------------------------------------- */
+/* ------------------------------------------------------------------------------------- */
+/* ------------------------------------------------------------------------------------- */
+
+/* PRODUCTOS --------------------------------------------------------------------------- */
+
+.table-responsive-producto {
+    position: relative;
+}
+.lista-productos-container, .registro-productos-container {
+    padding: 20px;
+    background-color: #bebebe57;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+.filtro-proveedor-inline-producto {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+.formulario-filtro-inline-producto {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.acciones-title-producto {
+    display: table-cell;
+}
+.form-eliminar-producto {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+}
+.boton_x-producto {
+    padding: 4px 8px;
+    font-size: 0.8em; 
+    height: 30px; 
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: 5px;  
+    line-height: 1; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+}
+.btn-danger {
+    background-color: #DC3545;
+}
+.btn-success {
+    background-color: #28A745;
+}
+.btn-action-producto {
+    padding: 4px 8px;
+    font-size: 0.8em; 
+    color: white;
+    border: none;
+    border-radius: 4px;
+}
+.btn-warning {
+    background-color:#dfa804;
+}
+.cantidad-container-producto {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+.cantidad-producto {
+    min-width: 35px;
+    text-align: center;
+    margin: 0 5px;
+}
+.tabla-productos-container-producto {
+    max-height: 400px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    width: 100%;
+}
+.table-producto {
+    width: 100%;
+    border-collapse: collapse;
+}
+.table-producto th {
+    background-color: #09b0a5;
+    color: white;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    padding: 8px;
+    text-align: left;
+}
+.inline-buttons-producto .boton_y-producto {
+    display: none;
+}
+.button-container-producto {
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    margin-top: 20px;
+}
+.cantidad-roja {
+    color: red;
+    font-weight: bold; 
+}
+
+.cantidad-amarilla {
+    color: yellow;
+    font-weight: bold;
+}
+
+.cantidad-verde {
+    color: green; 
+    font-weight: bold; 
+}
+.registro-productos-container {
+    width: 100%;      
+    margin: 0 auto;        
+}
+#alertMessage {
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+#alertMessage.hide {
+    opacity: 0;
+    visibility: hidden;
+}
+.search-container {
+    margin: 20px;
+    width: 20%; 
+}
+
+/* CATEGORIA --------------------------------------------------------------------------- */
+.tabla-categorias th {
+    background-color: #09b0a5;
+    color: white;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+.button-container-categoria {
+    display: flex;              
+    justify-content: center;     
+    gap: 20px;                   
+    margin-top: 20px;            
+}
+.btn-sm-categoria {
+    padding: 4px 8px;
+    font-size: 0.8em; 
+    color: white;
+    border: none;
+    border-radius: 4px;
+}
+.alert.fade-out {
+    opacity: 0;
+    transition: opacity 1s ease-out;  /* Aplica una transición suave de 1 segundo */
+}
+
+/* PROVEEDOR --------------------------------------------------------------------------- */
+
+.table-responsive-proveedor {
+    position: relative;
+}
+
+.table-proveedor {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #D3D3D3;
+}
+
+.table-proveedor th {
+    background-color: #09b0a5;
+    color: white;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    padding: 8px;
+    text-align: left;
+}
+
+.table-proveedor td {
+    padding: 8px;
+    text-align: left;
+}
+
+.table-proveedor tr:nth-child(even) {
+    background-color: #ffffff;
+}
+
+.table-proveedor tr:hover {
+    background-color: #ffffff;
+}
+
+.table-proveedor .btn-sm-proveedor {
+    padding: 4px 8px;
+    font-size: 0.8em;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: 5px;
+}
+
+.btn-warning {
+    background-color: #dfa804;
+}
+
+.btn-danger {
+    background-color: #DC3545;
+}
+
+.btn-warning:hover, .btn-danger:hover {
+    opacity: 0.8;
+}
+
+.table-responsive-proveedor {
+    max-height: 400px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    width: 100%;
+}
+
+#alertMessage {
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+#alertMessage.hide {
+    opacity: 0;
+    visibility: hidden;
+}
+
+
+/* MagikStock [Empleados] ----------------------------------------------------------------- */
+/* ------------------------------------------------------------------------------------- */
+/* ------------------------------------------------------------------------------------- */
+
+.table-responsive-empleado {
+    position: relative;
+    max-height: 400px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    width: 100%;
+}
+.table-empleados {
+    width: 100%;
+    border-collapse: collapse;
+}
+.table-empleados th {
+    background-color: #09b0a5;
+    color: white;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    padding: 8px;
+    text-align: left;
+    font-weight: bold;
+}
+.table-empleados td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+.table-empleados tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+.table-empleados tr:hover {
+    background-color: #ddd;
+}
+.table-empleados td[data-label] {
+    position: relative;
+}
+.btn-empleado {
+    padding: 6px 12px;
+    font-size: 0.9em;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+    margin: 2px;
+    transition: background-color 0.3s ease;
+}
+.btn-warning-empleado {
+    background-color: #dfa804;
+    color: white;
+}
+.btn-danger-empleado {
+    background-color: #DC3545;
+    color: white;
+}
+.btn-empleado:hover {
+    opacity: 0.8;
+}
+.alert {
+    margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.alert-success {
+    background-color: #28A745;
+    color: white;
+}
+
+.alert-dismissible {
+    padding-right: 40px;
+}
+
+.alert-success .close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 1.4em;
+}
+
+
+
+
+
+
+
+
+/* SETTING ---------------------------------------- */
+/* ------------------------------------------------ */
+
+.img-only-button {
+    background: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.img-only-button img {
+    width: 20px;
+    height: 20px;
+    display: block;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.input-group {
+    display: flex;
+    align-items: center;
+}

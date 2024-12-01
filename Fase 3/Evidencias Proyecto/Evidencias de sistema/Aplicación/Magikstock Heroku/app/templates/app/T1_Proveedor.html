@@ -1,0 +1,110 @@
+{% extends 'app/base.html' %}
+
+{% load static %}
+
+{% block estilos %}
+<link rel="stylesheet" href="{% static 'app/css/style.css' %}">
+<link rel="stylesheet" href="{% static 'app/css/style_mobile.css' %}">
+{% endblock %}
+
+{% block contenido %}
+
+
+{% if messages %}
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+    {% for message in messages %}
+        {{ message }}
+    {% endfor %}
+</div>
+{% endif %}
+
+
+<div class="def_container">
+
+    
+    <h2> Lista de Proveedores </h2>
+
+    
+    <hr>
+
+    
+    <div class="table-responsive-proveedor">
+
+        <table class="table-proveedor table-striped table-bordered">
+
+            
+            <thead>
+                <tr>
+                    <th>ID Proveedor</th>
+                    <th>Nombre</th>
+                    <th>Teléfono</th>
+                    <th>Correo Electrónico</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+
+            
+            <tbody>
+                {% for proveedor in proveedores %}
+                <tr>
+                    <td data-label="ID Proveedor:">{{ proveedor.id_proveedor }}</td>
+                    <td data-label="Nombre:">{{ proveedor.nombre_proveedor }}</td>
+                    <td data-label="Teléfono:">{{ proveedor.telefono }}</td>
+                    <td data-label="Mail:">{{ proveedor.correo_proveedor }}</td>
+                    <td data-label="Acciones:">
+                        {% if proveedor.id_proveedor %}
+                            <form action="{% url 'editar_proveedor' proveedor.id_proveedor %}" method="get" style="display:inline;">
+                                <button type="submit" class="btn btn-warning btn-sm-proveedor">Editar</button>
+                            </form>
+                            
+                            {% if is_admin %}
+                            <form action="{% url 'eliminar_proveedor' proveedor.id_proveedor %}" method="POST" style="display:inline;">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-danger btn-sm-proveedor" onclick="return confirm('¿Estás seguro de que quieres eliminar este proveedor?');">Eliminar</button>
+                            </form>
+                            {% endif %}
+                        {% else %}
+                            <span>No disponible</span>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="5">No hay proveedores registrados</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div> 
+
+
+<div class="def_container">
+
+    
+    <br> <h3 style="text-align: center;"> REGISTRO DE PROVEEDORES </h3> <hr> 
+
+    
+    <div class="top-section-proveedor custom-form-section-proveedor">
+        <section class="estilos-stock-proveedor" id="agregar-proveedor">
+            
+        
+            <form id="stockForm-proveedor" method="POST">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <div class="botones_editar">
+                    <button type="submit" class="button-magikstock"> REGISTRAR </button>
+                </div>
+            </form>
+
+        </section>
+    </div>
+
+</div>
+
+<script src="{% static 'app/js/full_scripts.js' %}"></script>
+
+{% endblock %}
